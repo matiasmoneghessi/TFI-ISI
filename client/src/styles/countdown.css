@@ -1,0 +1,16 @@
+.timer{
+    border-color: #67e9ee;
+    border-style:double;
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 2%;
+    
+    border-radius: 3%;
+    font-size: large;
+    padding: 2%;
+}
+ 
+#timer{
+    color:  #67e9ee;
+    margin-left: 4%;
+}

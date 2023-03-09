@@ -1,0 +1,98 @@
+.mainContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .mainContainer {
+    flex-direction: row;
+  }
+}
+
+.logoContainer {
+  background-color: #262833;
+  height: 64px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 0;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .logoContainer {
+    height: auto;
+    flex-grow: 4;
+  }
+}
+
+.contentContainer {
+  background-color: white;
+  flex-grow: 6;
+  display: flex;
+  align-items: center;
+  flex-basis: 0;
+}
+
+.contentContainer > div {
+  background-color: #67e9ee;
+  width: min(600px, 80%);
+/*   height: 600px;
+ */  border: 2px solid #262833;
+  border-radius: 5px;
+  padding: 20px 20px 15px;
+}
+
+@media (min-width: 768px) {
+  .contentContainer > div {
+    margin: 60px auto;
+  }
+}
+
+.largeLogo {
+  align-self: center;
+  display: none;
+}
+
+.smallLogo {
+  align-self: center;
+}
+
+@media (min-width: 768px) {
+  .smallLogo {
+    display: none;
+  }
+  .largeLogo {
+    display: block;
+  }
+}
+
+h2 {
+  text-align: center;
+}
+
+.boton {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.unregistred {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.p {
+  margin: 0;
+}
+
+.formField {
+  margin-top: 12px;
+}

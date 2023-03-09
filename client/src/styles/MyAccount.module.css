@@ -1,0 +1,44 @@
+.mainContainer {
+  height: calc(100vh - 62px);
+  display: flex;
+  background-color: #3c3f50;
+}
+
+.contentContainer {
+  background-color: white;
+  background-image: url("../../public/fondo.jpg");
+  width: 100%;
+  margin: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.userDetails {
+  width: calc(100%-60px);
+  margin: 40px;
+}
+
+.userDetails > ul {
+  list-style-type: none;
+  font-size: 1.3em;
+  line-height: 2.2em;
+  margin: 0;
+  padding: 0;
+}
+
+.buttonsContainer {
+  width: calc(100%-60px) !important;
+  margin: 40px !important;
+  display: flex !important;
+  justify-content: end !important;
+}
+
+.buttons {
+  margin-left: 20px;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+}

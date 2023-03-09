@@ -1,0 +1,74 @@
+.mainContainer {
+  height: calc(100vh - 62px);
+  display: flex;
+  background-color: #3c3f50;
+}
+
+.contentContainer {
+  background-color: white;
+  width: 100%;
+  margin: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nameContainer {
+  width: calc(100%-60px);
+  margin: 15px 45px 0;
+}
+
+.dataContainer {
+  width: calc(100%-60px);
+  margin: 0 40px;
+  display: flex;
+  flex-basis: 100%;
+}
+
+.leftDataContainer {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+}
+
+.rightDataContainer {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+}
+
+.generalContainer {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  border: 1px solid lightgray;
+  margin: 5px;
+  padding: 20px;
+}
+
+.buttonsContainer {
+  width: calc(100%-60px);
+  margin: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons {
+  margin: 0 10px;
+}
+
+.generalContainer > ul {
+  list-style-type: none;
+  margin: 0 10px;
+  padding: 0;
+  line-height: 2.4rem;
+}
+
+.generalContainerTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+li {
+  display: flex;
+}

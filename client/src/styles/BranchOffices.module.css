@@ -1,0 +1,31 @@
+.mainContainer {
+  height: calc(100vh - 62px);
+  display: flex;
+  background-color: #3c3f50;
+}
+
+.contentContainer {
+  background-color: white;
+  background-image: url("../../public/fondo.jpg");
+  width: 100%;
+  margin: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tableContainer {
+  width: calc(100%-60px);
+  margin: 40px;
+}
+
+.buttonsContainer {
+  width: calc(100%-60px);
+  margin: 40px;
+  display: flex;
+  justify-content: end;
+}
+
+.buttons {
+  margin-left: 20px;
+}
