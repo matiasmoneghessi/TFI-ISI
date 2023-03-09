@@ -50,20 +50,10 @@ function Login() {
       });
   };
 
-  // const ref = useRef(null);
-  // const myFunction = () => {
-  //   var x = ref.current
-  //   if (x.type === "password") {
-  //     x.type = "text";
-  //   } else {
-  //     x.type = "password";
-  //   }
-  // }
-
   return (
-    <div className={style.mainContainer}>
-      <div className={style.logoContainer}>
-        {/* <img
+    <div className={style.containerBox}>
+      {/*<div className={style.logoContainer}>
+         <img
           className={style.largeLogo}
           src={require("../images/1.png")}
           alt="TuTurno"
@@ -72,14 +62,13 @@ function Login() {
           className={style.smallLogo}
           src={require("../images/2.png")}
           alt="TuTurno"
-        /> */}
-      </div>
-      <div className={style.contentContainer}>
-        <div>
-          <h2>Login</h2>
-
+        /> 
+      </div>*/}
+      <div className={style.midContainer}>
+        <div className={style.midContainerSignIn}>
+          <h1 className={style.labelsTitulos}>Log In</h1>
           <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formEmail">
+            <Form.Group className={style.inputsSingIn} controlId="formEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 placeholder="Ingrese su email"
@@ -90,7 +79,7 @@ function Login() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            <Form.Group className={style.inputsSingIn}>
               <Form.Label>Contraseña</Form.Label>
               <Form.Control
                 placeholder="Ingrese su contraseña"
@@ -98,23 +87,33 @@ function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                //id="myInput" ref={ref}
               />
-              {/* <input type="checkbox" onClick={myFunction} /> Mostrar Contraseña */}
             </Form.Group>
-            <div className={style.boton}>
-              <Button variant="secondary" type="submit">
-                Ingresar
-              </Button>
-            </div>
 
-            <Link className={style.link} to="/assist_password">
+            <Link className={style.labelOlvidoContraseña} to="/assist_password">
               Olvidé mi contraseña
             </Link>
 
-            <div className={style.unregistred}>
-              <p className={style.p}>Aún no tengo una cuenta</p>
-              <Link to="/register">Registrarme</Link>
+            <div className={style.boton}>
+              <Button className={style.btnSignIn} variant="secondary" type="submit">
+                Ingresar
+              </Button>
+            </div>
+          </Form>
+
+          <div>
+            <a href="#" className={style.btnSocialMedia}><i className="fab fa-facebook-f"></i></a>
+            <a href="#" className={style.btnSocialMedia}><i className="fab fa-google-plus-g"></i></a>
+            <a href="#" className={style.btnSocialMedia}><i className="fab fa-linkedin-in"></i></a>
+          </div>
+
+        </div>
+        <div className={style.midContainerSignUp}>
+          <h2 className={style.labelsTitulos}>Sign Up</h2>
+          <Form onSubmit={handleSubmit}>
+            <div className={style.btnSignUp}>
+              <p>Aún no tienes cuenta?</p>
+              <Link to="/register" className={style.linkForgotPass}>Registrate!</Link>
             </div>
           </Form>
         </div>

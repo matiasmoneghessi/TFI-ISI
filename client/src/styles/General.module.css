@@ -96,3 +96,139 @@ h2 {
 .formField {
   margin-top: 12px;
 }
+
+/* NUEVAS CLASES - VERSIÓN V2 */
+/* ---------------------------- */
+/* CONTENEDORES */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+.containerBox {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.midContainer {
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
+  overflow: hidden;
+  width: 50%;
+  height: 70%;
+}
+
+.midContainerSignIn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  width: 50%;
+  padding: 15px;
+}
+
+.midContainerSignUp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #20A4F3;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	overflow: hidden;
+	width: 50%;
+}
+
+/* INPUTS */
+
+.inputsSingIn {
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+.btnSignIn {
+  display: flex;
+  justify-content: center;
+	border-radius: 20px;
+	border: 1px solid #20A4F3;
+	background-color: #20A4F3;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+.btnSignIn:active {
+	transform: scale(0.95);
+}
+.btnSignIn:focus {
+	outline: none;
+}
+.btnSignIn.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+.btnSignUp {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+	border-radius: 20px;
+	border: 1px solid #20A4F3;
+	background-color: #20A4F3;
+	color: #000000;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+.btnSignUp:focus {
+	outline: none;
+}
+.btnSignUp.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+.linkForgotPass{
+  margin: 0;
+  color: white;
+}
+.linkForgotPass:hover{
+  margin: 0;
+  color: white;
+}
+.linkForgotPass:active {
+	transform: scale(0.95);
+}
+
+/* LABELS */
+
+.labelsTitulos {
+  text-align: center;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.labelOlvidoContraseña {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+	color: #333333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
