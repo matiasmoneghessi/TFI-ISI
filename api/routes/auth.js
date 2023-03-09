@@ -108,7 +108,7 @@ router.post("/register", async (req, res) => {
       to: `${userDB.email}`, //correo del usuario al cual se le enviará el mensaje. Correo de registro exitoso
       subject: `Hola ${userDB.fname[0].toUpperCase()}${userDB.fname.substring(
         1
-      )}, bienvenid@ a miTurno`,
+      )}, bienvenid@ a TuTurno`,
       text: "Muchas gracias por utilizar nuestro servicio",
       html: htmlTemplateRegister,
     };
@@ -157,7 +157,7 @@ router.put("/forgotPassword", async (req, res) => {
             to: `${user.email}`, //correo del usuario al cual se le enviará el mensaje. Correo con link para restablecer contraseña
             subject: `Hola ${user.fname[0].toUpperCase()}${user.fname.substring(
               1
-            )}, bienvenid@ a miTurno`,
+            )}, bienvenid@ a TuTurno`,
             text: "Muchas gracias por utilizar nuestro servicio",
             html: htmlTemplateReset(token),
           };
@@ -227,7 +227,7 @@ router.put("/newPassword", async (req, res) => {
         to: `${user.email}`, //correo del usuario al cual se le enviará el mensaje. Correo de cambio de contraseña exitoso
         subject: `Hola ${user.fname[0].toUpperCase()}${user.fname.substring(
           1
-        )}, bienvenid@ a miTurno`,
+        )}, bienvenid@ a TuTurno`,
         text: "Muchas gracias por utilizar nuestro servicio",
         html: htmlTemplatePassSuccessfully,
       };

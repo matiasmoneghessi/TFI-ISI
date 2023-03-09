@@ -177,7 +177,7 @@ router.put("/:userId/myAppointment/remove", async (req, res) => {
     const info = {
       from: `info@miturno.com`, //correo desde el cual se envía el mensaje ej: info@miturno.com
       to: `${userData[0].email}`, //correo del usuario al cual se le enviará el mensaje. Correo con link para restablecer contraseña
-      subject: `miTurno del ${appointmentCanceled.date}/${appointmentCanceled.month}/${appointmentCanceled.year} a las ${appointmentCanceled.time}hs en sucursal ${branchOffice.location}`, //Asunto del mensaje
+      subject: `TuTurno del ${appointmentCanceled.date}/${appointmentCanceled.month}/${appointmentCanceled.year} a las ${appointmentCanceled.time}hs en sucursal ${branchOffice.location}`, //Asunto del mensaje
       text: "Muchas gracias por utilizar nuestro servicio",
       html: htmlTemplateCanceled,
     };
@@ -310,7 +310,7 @@ router.put("/:userId/myAppointment/confirmed", async (req, res) => {
     const info = {
       from: `info@miturno.com`, //correo desde el cual se envía el mensaje ej: info@miturno.com
       to: `${userData[0].email}`, //correo del usuario al cual se le enviará el mensaje. Correo con link para restablecer contraseña
-      subject: `miTurno del ${appointmentConfirm.date}/${appointmentConfirm.month}/${appointmentConfirm.year} a las ${appointmentConfirm.time}hs en sucursal ${branchOffice.location}`, //Asunto del mensaje
+      subject: `TuTurno del ${appointmentConfirm.date}/${appointmentConfirm.month}/${appointmentConfirm.year} a las ${appointmentConfirm.time}hs en sucursal ${branchOffice.location}`, //Asunto del mensaje
       text: "Muchas gracias por utilizar nuestro servicio",
       html: htmlTemplateReserved,
     };
@@ -319,7 +319,7 @@ router.put("/:userId/myAppointment/confirmed", async (req, res) => {
     const infoReminder = {
       from: `info@miturno.com`, //correo desde el cual se envía el mensaje ej: info@miturno.com
       to: `${userData[0].email}`, //correo del usuario al cual se le enviará el mensaje. Correo con link para restablecer contraseña
-      subject: `miTurno del ${appointmentConfirm.date}/${appointmentConfirm.month}/${appointmentConfirm.year} a las ${appointmentConfirm.time}hs en sucursal ${branchOffice.location}`, //Asunto del mensaje
+      subject: `TuTurno del ${appointmentConfirm.date}/${appointmentConfirm.month}/${appointmentConfirm.year} a las ${appointmentConfirm.time}hs en sucursal ${branchOffice.location}`, //Asunto del mensaje
       text: "Muchas gracias por utilizar nuestro servicio",
       html: htmlTemplateReminder,
     };
@@ -327,7 +327,7 @@ router.put("/:userId/myAppointment/confirmed", async (req, res) => {
       transport.sendMail(infoReminder);
     }); //este bloque de código envía el correo de recordatorio al cliente a los 30 segundos simulando las 24 hs
     
-    res.status(200).json("miTurno ha sido confirmado!");
+    res.status(200).json("TuTurno ha sido confirmado!");
   } catch (err) {
     res.status(404).json(err);
   }
