@@ -1,7 +1,7 @@
 # TuTurno 
 ## Acerca del Proyecto
 
-...
+....
 
 ## Stack de tecnologías utilizadas
 #### Back End: 
