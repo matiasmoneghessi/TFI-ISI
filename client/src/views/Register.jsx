@@ -98,20 +98,7 @@ function Register() {
   });
 
   return (
-    <div className={style.mainContainer}>
-      <div className={style.logoContainer}>
-        {/* <img
-          className={style.largeLogo}
-          src={require("../images/1.png")}
-          alt="TuTurno"
-        />
-        <img
-          className={style.smallLogo}
-          src={require("../images/2.png")}
-          alt="TuTurno"
-        /> */}
-      </div>
-
+    <div className={style.containerBox}>
       <Formik
         initialValues={{
           fname: "",
@@ -127,14 +114,28 @@ function Register() {
         }}
       >
         {(formik, isSubmitting) => (
-          <div className={style.contentContainer}>
-            <div>
-              <h2>Registro</h2>
-
+          <div className={style.midContainerRegister}>
+            
+            <div className={style.midContainerSignUp}>
+              <h2 className={style.labelsTitulos}>Log In</h2>
+                <div className={style.btnSignUp}>
+                  <p className={style.labelsTitulos}>Ya tienes una cuenta?</p>
+                  <Link to="/login" className={style.linkForgotPass}>Inicia sesión!</Link>
+                </div>
+            </div>
+            
+            <div className={style.midContainerSignIn}>
+              <h2 className={style.labelsTitulos}>Registro</h2>
               <Form>
-                <div className="form-group">
-                  <label className={style.formField} htmlFor="fname">
-                    Nombre
+                <div className={style.inputsRegister}>
+                  <label className={style.labelsErrorValidacionAlert} htmlFor="fname">
+                    Nombre: 
+                    {formik.touched.fname && formik.errors.fname ? 
+                    (
+                      <label className={style.labelsErrorValidacion}>
+                        {formik.errors.fname}
+                      </label>
+                    ) : null}
                   </label>
                   <Field
                     name="fname"
@@ -146,16 +147,17 @@ function Register() {
                         : "form-control"
                     }
                   />
-                  {formik.touched.fname && formik.errors.fname ? (
-                    <div className="invalid-feedback">
-                      {formik.errors.fname}
-                    </div>
-                  ) : null}
                 </div>
 
-                <div className="form-group">
-                  <label className={style.formField} htmlFor="fname">
-                    Apellido
+                <div className={style.inputsRegister}>
+                  <label className={style.labelsErrorValidacionAlert} htmlFor="fname">
+                    Apellido:
+                    {formik.touched.lname && formik.errors.lname ? 
+                    (
+                      <label className={style.labelsErrorValidacion}>
+                        {formik.errors.lname}
+                      </label>
+                    ) : null} 
                   </label>
                   <Field
                     name="lname"
@@ -167,16 +169,17 @@ function Register() {
                         : "form-control"
                     }
                   />
-                  {formik.touched.lname && formik.errors.lname ? (
-                    <div className="invalid-feedback">
-                      {formik.errors.lname}
-                    </div>
-                  ) : null}
                 </div>
 
-                <div className="form-group">
-                  <label className={style.formField} htmlFor="dni">
-                    N° documento
+                <div className={style.inputsRegister}>
+                  <label className={style.labelsErrorValidacionAlert} htmlFor="dni">
+                    <label className={style.labelsTituloInput}>N° documento:</label>
+                    {formik.touched.dni && formik.errors.dni ? 
+                    (
+                      <label className={style.labelsErrorValidacion}>
+                        {formik.errors.dni}
+                      </label>
+                    ) : null}
                   </label>
                   <Field
                     name="dni"
@@ -188,14 +191,17 @@ function Register() {
                         : "form-control"
                     }
                   />
-                  {formik.touched.dni && formik.errors.dni ? (
-                    <div className="invalid-feedback">{formik.errors.dni}</div>
-                  ) : null}
                 </div>
 
-                <div className="form-group">
-                  <label className={style.formField} htmlFor="email">
-                    Email
+                <div className={style.inputsRegister}>
+                  <label className={style.labelsErrorValidacionAlert} htmlFor="email">
+                    Email:
+                    {formik.touched.email && formik.errors.email ? 
+                    (
+                      <label className={style.labelsErrorValidacion}>
+                        {formik.errors.email}
+                      </label>
+                    ) : null}
                   </label>
                   <Field
                     name="email"
@@ -207,16 +213,17 @@ function Register() {
                         : "form-control"
                     }
                   />
-                  {formik.touched.email && formik.errors.email ? (
-                    <div className="invalid-feedback">
-                      {formik.errors.email}
-                    </div>
-                  ) : null}
                 </div>
 
-                <div className="form-group">
-                  <label className={style.formField} htmlFor="password">
-                    Contraseña
+                <div className={style.inputsRegister}>
+                  <label className={style.labelsErrorValidacionAlert} htmlFor="password">
+                    Contraseña:
+                    {formik.touched.password && formik.errors.password ? 
+                    (
+                      <label className={style.labelsErrorValidacion}>
+                        {formik.errors.password}
+                      </label>
+                    ) : null}
                   </label>
                   <Field
                     name="password"
@@ -228,17 +235,17 @@ function Register() {
                         : "form-control"
                     }
                   />
-                  <span className="password-toogle-icon">ICON {icon}</span>
-                  {formik.touched.password && formik.errors.password ? (
-                    <div className="invalid-feedback">
-                      {formik.errors.password}
-                    </div>
-                  ) : null}
                 </div>
 
-                <div className="form-group">
-                  <label className={style.formField} htmlFor="rePassword">
-                    Repetir contraseña
+                <div className={style.inputsRegister}>
+                  <label className={style.labelsErrorValidacionAlert} htmlFor="rePassword">
+                  <label className={style.labelsTituloInputRepeContra}>Repetir contraseña:</label>
+                    {formik.touched.rePassword && formik.errors.rePassword ? 
+                    (
+                      <label className={style.labelsErrorValidacion}>
+                        {formik.errors.rePassword}
+                      </label>
+                    ) : null}
                   </label>
                   <Field
                     name="rePassword"
@@ -250,23 +257,14 @@ function Register() {
                         : "form-control"
                     }
                   />
-                  {formik.touched.rePassword && formik.errors.rePassword ? (
-                    <div className="invalid-feedback">
-                      {formik.errors.rePassword}
-                    </div>
-                  ) : null}
                 </div>
 
                 <div className={style.boton}>
-                  <Button variant="secondary" type="submit">
+                  <Button className={style.btnSignIn} variant="secondary" type="submit">
                     Registrarme
                   </Button>
                 </div>
               </Form>
-              <div className={style.unregistred}>
-                <p className={style.p}>Ya tengo una cuenta</p>
-                <Link to="/login">Ir a login</Link>
-              </div>
             </div>
           </div>
         )}
