@@ -120,7 +120,7 @@ function Register() {
               <h2 className={style.labelsTitulos}>Log In</h2>
                 <div className={style.btnSignUp}>
                   <p className={style.labelsTitulos}>Ya tienes una cuenta?</p>
-                  <Link to="/login" className={style.linkForgotPass}>Inicia sesión!</Link>
+                  <Link to="/login" className={style.linkPageRegister}>Inicia sesión!</Link>
                 </div>
             </div>
             

@@ -66,45 +66,50 @@ function Login() {
       </div>*/}
       <div className={style.midContainer}>
         <div className={style.midContainerSignIn}>
-          <h1 className={style.labelsTitulos}>Log In</h1>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className={style.inputsSingIn} controlId="formEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                placeholder="Ingrese su email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </Form.Group>
+          <div className={style.headerLogIn}>
+            <h1 className={style.labelsTitulos}>Log In</h1>
+          </div>
 
-            <Form.Group className={style.inputsSingIn}>
-              <Form.Label>Contraseña</Form.Label>
-              <Form.Control
-                placeholder="Ingrese su contraseña"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </Form.Group>
+          <div className={style.midPageLogIn}>
+            <Form className={style.formPageLogIn} onSubmit={handleSubmit}>
+              <Form.Group className={style.inputsSingIn} controlId="formEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  placeholder="Ingrese su email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-            <Link className={style.labelOlvidoContraseña} to="/assist_password">
-              Olvidé mi contraseña
-            </Link>
+              <Form.Group className={style.inputsSingIn}>
+                <Form.Label>Contraseña</Form.Label>
+                <Form.Control
+                  placeholder="Ingrese su contraseña"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-            <div className={style.boton}>
-              <Button className={style.btnSignIn} variant="secondary" type="submit">
-                Ingresar
-              </Button>
-            </div>
-          </Form>
+              <Link className={style.labelOlvidoContraseña} to="/assist_password">
+                Olvidé mi contraseña
+              </Link>
 
-          <div>
-            <a href="#" className={style.btnSocialMedia}><i className="fab fa-facebook-f"></i></a>
-            <a href="#" className={style.btnSocialMedia}><i className="fab fa-google-plus-g"></i></a>
-            <a href="#" className={style.btnSocialMedia}><i className="fab fa-linkedin-in"></i></a>
+              <div className={style.boton}>
+                <Button className={style.btnSignIn} variant="secondary" type="submit">
+                  Ingresar
+                </Button>
+              </div>
+            </Form>
+          </div>
+          
+          <div className={style.footerSocialMedia}>
+            <a href="#" className={style.btnSocialMedia}><i className="bi bi-facebook"></i></a>
+            <a href="#" className={style.btnSocialMedia}><i className="bi bi-github"></i></a>
+            <a href="#" className={style.btnSocialMedia}><i className="bi bi-linkedin"></i></a>
           </div>
 
         </div>
@@ -113,7 +118,7 @@ function Login() {
           <Form onSubmit={handleSubmit}>
             <div className={style.btnSignUp}>
               <p>Aún no tienes cuenta?</p>
-              <Link to="/register" className={style.linkForgotPass}>Registrate!</Link>
+              <Link to="/register" className={style.linkPageRegister}>Registrate!</Link>
             </div>
           </Form>
         </div>

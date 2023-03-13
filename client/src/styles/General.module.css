@@ -97,7 +97,7 @@ h2 {
   margin-top: 12px;
 }
 
-/* NUEVAS CLASES - VERSIÓN V2 */
+/* NUEVAS CLASES - LOG IN / SIGN UP - VERSIÓN V2 */
 /* ---------------------------- */
 /* CONTENEDORES */
 
@@ -109,6 +109,14 @@ h2 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.headerLogIn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10%;
 }
 
 .midContainer {
@@ -132,6 +140,19 @@ h2 {
   padding: 15px;
 }
 
+.midPageLogIn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80%;
+}
+.formPageLogIn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .midContainerSignUp {
   display: flex;
   flex-direction: column;
@@ -151,6 +172,14 @@ h2 {
   box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
   overflow: hidden;
   width: 60%;
+}
+
+.footerSocialMedia {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  justify-content: space-evenly;
+  align-items: end;
 }
 
 /* INPUTS */
@@ -216,15 +245,19 @@ h2 {
 	border-color: #FFFFFF;
 }
 
-.linkForgotPass{
+.btnSocialMedia {
+  font-size: 35px;
+}
+
+.linkPageRegister{
   margin: 0;
   color: white;
 }
-.linkForgotPass:hover{
+.linkPageRegister:hover{
   margin: 0;
   color: white;
 }
-.linkForgotPass:active {
+.linkPageRegister:active {
 	transform: scale(0.95);
 }
 
@@ -242,7 +275,7 @@ h2 {
   justify-content: center;
   margin-top: 10px;
 	color: #333333;
-	font-size: 14px;
+	font-size: 15px;
 	text-decoration: none;
 	margin: 15px 0;
 }
