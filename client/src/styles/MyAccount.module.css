@@ -5,8 +5,6 @@
 }
 
 .contentContainer {
-  background-color: white;
-  background-image: url("../../public/fondo.jpg");
   width: 100%;
   margin: 40px 60px;
   display: flex;
@@ -46,3 +44,28 @@
 /* NUEVAS CLASES - MI PERFIL - VERSIÓN V2 */
 /* ---------------------------- */
 /* CONTENEDORES */
+
+.formProfilePage {
+  display: flex;
+  flex-direction: column;
+}
+
+.listProfilePage {
+  display: flex;
+}
+
+.containerProfileTitle {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  width: 35%;
+  border-radius: 10px;
+}
+
+.containerProfileInfo {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  width: 60%;
+  border-radius: 10px;
+}

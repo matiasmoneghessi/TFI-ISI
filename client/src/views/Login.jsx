@@ -108,7 +108,7 @@ function Login() {
           
           <div className={style.footerSocialMedia}>
             <a href="#" className={style.btnSocialMedia}><i className="bi bi-facebook"></i></a>
-            <a href="#" className={style.btnSocialMedia}><i className="bi bi-github"></i></a>
+            <a href="https://github.com/matiasmoneghessi/TFI-ISI" className={style.btnSocialMedia}><i className="bi bi-github"></i></a>
             <a href="#" className={style.btnSocialMedia}><i className="bi bi-linkedin"></i></a>
           </div>
 
