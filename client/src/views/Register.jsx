@@ -260,9 +260,9 @@ function Register() {
                 </div>
 
                 <div className={style.boton}>
-                  <Button className={style.btnSignIn} variant="secondary" type="submit">
+                  <button className={style.btnSignIn} variant="secondary" type="submit">
                     Registrarme
-                  </Button>
+                  </button>
                 </div>
               </Form>
             </div>

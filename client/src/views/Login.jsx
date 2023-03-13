@@ -99,9 +99,9 @@ function Login() {
               </Link>
 
               <div className={style.boton}>
-                <Button className={style.btnSignIn} variant="secondary" type="submit">
+                <button className={style.btnSignIn} type="submit">
                   Ingresar
-                </Button>
+                </button>
               </div>
             </Form>
           </div>
