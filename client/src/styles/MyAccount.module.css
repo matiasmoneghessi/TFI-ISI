@@ -1,7 +1,6 @@
 .mainContainer {
   height: calc(100vh - 62px);
   display: flex;
-  background-color: #3c3f50;
 }
 
 .contentContainer {
@@ -59,13 +58,72 @@
   flex-direction: column;
   background: #FFFFFF;
   width: 35%;
-  border-radius: 10px;
+  box-shadow: 10px;
+  padding: 10px;
+  margin-right: 10px;
+  box-shadow: 0px 0px 5px 1px;
+  border-radius: 10px 10px 10px 10px;
 }
 
 .containerProfileInfo {
   display: flex;
   flex-direction: column;
   background: #FFFFFF;
-  width: 60%;
+  width: 70%;
   border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0px 0px 5px 1px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+/* INPUTS */
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+.btnEditsButton {
+  display: flex;
+  justify-content: center;
+  margin-right: 8px;
+	border-radius: 20px;
+	border: 1px solid #20A4F3;
+	background-color: #20A4F3;
+	color: #FFFFFF;
+	font-size: 12px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+.btnEditsButton:active {
+	transform: scale(0.95);
+}
+.btnEditsButton:focus {
+	outline: none;
+}
+.btnEditsButton.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+.btnDeleteProfile {
+  display: flex;
+  justify-content: center;
+	border-radius: 20px;
+	border: 1px solid #FF0000;
+	background-color: #FF0000;
+	color: #FFFFFF;
+	font-size: 12px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+.btnDeleteProfile:hover {
+  background-color: #FF0000;
+}
+.btnDeleteProfile:active {
+	transform: scale(0.95);
+}
+.btnDeleteProfile:focus {
+	outline: none;
+}
+.btnDeleteProfile.ghost {
+	background-color: transparent;
+	border-color: #FF0000;
 }

@@ -104,7 +104,7 @@ const MyAccount = () => {
                   <ul className={style.listProfilePage}>
 
                     <div className={style.containerProfileTitle}>
-                      <h3>Mi Perfil</h3>
+                      <h3>Perfil</h3>
                       <li>
                         ID:&emsp;{payload.id}
                         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -116,16 +116,7 @@ const MyAccount = () => {
                     </div>
 
                     <div className={style.containerProfileInfo}>
-                      <Button
-                        variant="secondary"
-                        className={style.buttons}
-                        onClick={() => {
-                          setIsEditing(true);
-                        }}
-                      >
-                        <i className="bi bi-pencil-square"></i>
-                        &nbsp;&nbsp;Editar
-                      </Button>
+                      <h3>Datos</h3>
                       <li>
                         Apellido:&emsp;
                         {isEditing ? (
@@ -289,45 +280,62 @@ const MyAccount = () => {
                           userData.address
                         )}
                       </li>
+
+                      <div className={style.buttonsContainer}>
+
+                        {isEditing == false ? (
+                          <>
+                            <button
+                              className={style.btnEditsButton}
+                              onClick={() => {
+                                setIsEditing(true);
+                              }}
+                            >
+                              <i className="bi bi-pencil-square"></i>
+                              &nbsp;&nbsp;Editar
+                            </button>
+                            <button
+                              variant="secondary"
+                              className={style.btnDeleteProfile}
+                              onClick={() => {
+                                handleDelete();
+                              }}
+                            >
+                              <i class="bi bi-trash3-fill"></i>
+                              &nbsp;&nbsp;Eliminar mi cuenta
+                            </button>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+
+                        {isEditing ? (
+                          <>
+                            <button
+                              className={style.btnEditsButton}
+                              onClick={() => {
+                                formik.resetForm();
+                                setIsEditing(false);
+                              }}
+                            >
+                              <i class="bi bi-x-circle"></i>
+                              &nbsp;&nbsp;Descartar Cambios
+                            </button>
+                            <button
+                              type="submit"
+                              className={style.btnEditsButton}
+                            >
+                              <i class="bi bi-check-circle"></i>
+                              &nbsp;&nbsp;Confirmar Cambios
+                            </button>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
                     </div>
                   
                   </ul>
-                </div>
-
-                
-                <div className={style.buttonsContainer}>
-                  {isEditing ? (
-                    <>
-                      <Button
-                        variant="secondary"
-                        className={style.buttons}
-                        onClick={() => {
-                          formik.resetForm();
-                          setIsEditing(false);
-                        }}
-                      >
-                        Descartar Cambios
-                      </Button>
-                      <Button
-                        type="submit"
-                        variant="secondary"
-                        className={style.buttons}
-                      >
-                        Confirmar Cambios
-                      </Button>
-                    </>
-                  ) : (
-                    <></>
-                  )}
-                  <Button
-                    variant="secondary"
-                    className={style.buttons}
-                    onClick={() => {
-                      handleDelete();
-                    }}
-                  >
-                    Eliminar mi cuenta
-                  </Button>
                 </div>
               </Form>
             </div>
