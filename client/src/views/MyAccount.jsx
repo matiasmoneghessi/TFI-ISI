@@ -100,19 +100,18 @@ const MyAccount = () => {
                 <div className={style.userDetails}>
                   <ul className={style.listProfilePage}>
 
-                    <div className={style.containerProfileTitle}>
-                      <h3>Perfil</h3>
-                      <li>
-                        ID:&emsp;{payload.id}
-                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                      </li>
-                      <li>
-                        Rol:{" "}
-                        {userData.admin ? "AD" : userData.operator ? "OP" : "CL"}
-                      </li>
-                    </div>
-
                     <div className={style.containerProfileInfo}>
+                      <div className={style.containerProfileTitle}>
+                        <h3>Perfil</h3>
+                        <li>
+                          ID:&emsp;{payload.id}
+                          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        </li>
+                        <li>
+                          Rol:{" "}
+                          {userData.admin ? "AD" : userData.operator ? "OP" : "CL"}
+                        </li>
+                      </div>
                       <h3>Datos</h3>
                       <li>
                         Apellido:&emsp;
