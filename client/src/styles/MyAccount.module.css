@@ -3,6 +3,7 @@
 .mainContainer {
   height: calc(100vh - 62px);
   display: flex;
+  align-items: center;
 }
 
 .contentContainer {
@@ -26,7 +27,7 @@
 .buttonsContainer {
   width: calc(100%-60px) !important;
   display: flex !important;
-  justify-content: center !important;
+  justify-content: space-evenly;
   padding: 10px;
 }
 

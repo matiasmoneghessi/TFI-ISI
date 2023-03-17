@@ -14,7 +14,6 @@ import { Confirm } from "notiflix/build/notiflix-confirm-aio";
 import style from "../styles/OfficeDetails.module.css";
 
 const OfficeDetails = ({ office, selectOffice }) => {
-  // console.log(office);
 
   const token = JSON.parse(localStorage.getItem("user")).data.token;
   const payload = parseJwt(token);
@@ -91,10 +90,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
         return res.data.data;
       })
       .then((users) => {
-        console.log(office.operator[0]);
-        console.log(users);
         const op = users.filter((user) => user._id === office.operator[0])[0];
-        console.log(op);
         setOperator(op);
         setSelectedOperator(op);
       })
@@ -437,7 +433,6 @@ const OfficeDetails = ({ office, selectOffice }) => {
                                 <Dropdown.Item
                                   onClick={() => {
                                     setSelectedOperator();
-                                    console.log(selectedOperator);
                                   }}
                                   size="sm"
                                 >
@@ -448,7 +443,6 @@ const OfficeDetails = ({ office, selectOffice }) => {
                                     <Dropdown.Item
                                       onClick={() => {
                                         setSelectedOperator(operator);
-                                        console.log(selectedOperator);
                                       }}
                                       key={i}
                                     >

@@ -25,15 +25,8 @@ function BranchOfficeSelector() {
   const [branchOffices, setBranchOffices] = useState([])
   //const branchOffices = JSON.parse(localStorage.getItem('branches')).branches
   
-  console.log('LISTA DE SUCURSALES ', branchOffices)
-  
   const pickedBranchOffice = useSelector(state => state.branchOffice.clickedOffice)
   const user = parseJwt(JSON.parse(localStorage.getItem('user')).data.token)
-
-  console.log('EL USER ES ', user)
-  
-  console.log('ES ADMIN ? ', user.admin)
-  console.log('ES OPERADOR ? ', user.operator)
 
   const handleSelection = (e) => {
     e.preventDefault();
@@ -43,21 +36,12 @@ function BranchOfficeSelector() {
     dispatch(branchOfficePicker({clickedOffice}));
   }
 
-  console.log('LA SUC DEL OPERADOR ES ', user.branchOffice[0])
-  console.log('OFICINAS ', branchOffices)
-  
-   
-  
-
-  console.log('LA SUCURSAL SETEADA GLOBALMENTE ES ', pickedBranchOffice)  
-
   const getBranchOffices = async () => {   
     const res = await axios.get('http://localhost:3001/api/branchOffice/showBranch');     
     setBranchOffices(res.data.data)   
     }
         
   useEffect(() => {
-    console.log('ESTAMOS EN EL USEEFFECT')
     getBranchOffices()
     //dispatch(branchOfficesGetter())
   }, [])

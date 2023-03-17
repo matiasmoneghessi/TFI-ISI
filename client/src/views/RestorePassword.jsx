@@ -28,8 +28,6 @@ function RestorePassword() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(resetToken);
-
     axios
       .put(`http://localhost:3001/api/user/newPassword`, {
         headers: {

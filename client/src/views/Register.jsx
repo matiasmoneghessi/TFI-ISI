@@ -48,7 +48,6 @@ function Register() {
     ).then(() => {
       const registered =
         JSON.parse(localStorage.getItem("registered")).data.fname || null;
-      console.log("ESTO ES el FNAME de REGISTERED", registered);
       if (registered) {
         Report.success(
           "¡Registro exitoso!",

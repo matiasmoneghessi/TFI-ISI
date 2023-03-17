@@ -2,7 +2,6 @@ import { createAsyncThunk, createReducer } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const userRegister = createAsyncThunk("USER_REGISTER", (data) => {
-    console.log(data)
     return axios.post("http://localhost:3001/api/user/register", data) // chequear ruta
         .then(user => {
             localStorage.setItem('registered', JSON.stringify(user.data))
@@ -12,7 +11,6 @@ export const userRegister = createAsyncThunk("USER_REGISTER", (data) => {
 });
 
 export const userLogin = createAsyncThunk("USER_LOGIN", (data) => {
-    console.log(data)
     return axios.post("http://localhost:3001/api/user/login", data)
         .then(user => {
             localStorage.setItem('user', JSON.stringify(user.data))

@@ -60,7 +60,6 @@
         selected={startDate}
         onChange={(date) => {
           setStartDate(date)
-          console.log(date)
           }}
         showTimeSelect
         timeCaption="horarios"

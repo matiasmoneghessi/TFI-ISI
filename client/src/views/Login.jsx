@@ -33,7 +33,6 @@ function Login() {
       .then((user) => {
         const token = JSON.parse(localStorage.getItem("user")).data.token;
         const payload = parseJwt(token);
-        console.log(payload);
 
         payload.admin
           ? navigate("/users")

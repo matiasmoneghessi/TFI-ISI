@@ -31,7 +31,6 @@ const Calendar = () => {
   const [noStockTimes, setNoStockTimes] = useState([])
   const [fewStockTimes, setFewStockTimes] = useState([])
   const [manyStockTimes, setManyStockTimes] = useState([])
-    console.log('MANY ESSSSS ', manyStockTimes)
 
     // pedido GET al backend con una fecha y una sucursal
   const loadAppointments = () => {
@@ -44,7 +43,6 @@ const Calendar = () => {
       }
     })
     .then(arrAppointments => {
-      console.log('ARREGLO DE HORARIOS ES ', arrAppointments.data.data)
       const arrMany = []
       const arrFew = []
       const arrNo = []
@@ -60,11 +58,7 @@ const Calendar = () => {
     })
     .catch(err => console.log('ERROR TRAYENDO ARREGLO DE HORARIOS ES ', err)) 
   };      
-    
-  //console.log('NO STOCK ARR ES ', noStockTimes)
-  //console.log('FEW STOCK ARR ES ', fewStockTimes)
-  //console.log('MANY STOCK ARR ES ', manyStockTimes)
-  //console.log('SUCURSAL EN CALENDAR ', pickedBranchOffice)
+
   //const [timesExcluded, setTimesExcluded] = useState([])
   let timesExcluded
 
@@ -78,7 +72,6 @@ const Calendar = () => {
     timesExcluded = noStockTimes.map(
       e => setHours(setMinutes(selectedDate, e.slice(3)), e.slice(0,2))
       )
-    //console.log('HORARIOS EXCLUIDOS SON ', timesExcluded)
   }
 
   getExcludedTimes()
@@ -112,7 +105,6 @@ const Calendar = () => {
       timesExcluded = noStockTimes.map(
         e => setHours(setMinutes(selectedDate, e.slice(3)), e.slice(0,2))
         )
-      //console.log('HORARIOS EXCLUIDOS SON ', timesExcluded)
     }
     loadAppointments();
     setHhStart(pickedBranchOffice.startTime.slice(0,2));
@@ -157,8 +149,6 @@ const Calendar = () => {
           </ul>)
         : (<></>)
       }
-       {console.log('DATE ELEGIDO ES', pickedDate)}
-       {console.log('EL MIN TIME ES ', hhStart)}
       </>
     );
 };
