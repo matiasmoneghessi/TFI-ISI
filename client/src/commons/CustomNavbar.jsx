@@ -22,6 +22,36 @@ const CustomNavbar = () => {
   const payload = parseJwt(token);
   const role = payload.admin ? "AD" : payload.operator ? "OP" : "CL";
 
+  Confirm.init({
+    className: 'notiflix-confirm',
+    width: '400px',
+    zindex: 4003,
+    position: 'center',
+    distance: '10px',
+    backgroundColor: '#f8f8f8',
+    borderRadius: '25px',
+    backOverlay: true,
+    backOverlayColor: 'rgba(0,0,0,0.5)',
+    rtl: false,
+    fontFamily: 'Quicksand',
+    cssAnimation: true,
+    cssAnimationDuration: 300,
+    cssAnimationStyle: 'fade',
+    plainText: true,
+    titleColor: '#20A4F3',
+    titleFontSize: '20px',
+    titleMaxLength: 34,
+    messageColor: '#1E1E1E',
+    messageFontSize: '16px',
+    messageMaxLength: 110,
+    buttonsFontSize: '15px',
+    buttonsMaxLength: 34,
+    okButtonColor: '#F8F8F8',
+    okButtonBackground: '#20A4F3',
+    cancelButtonColor: '#F8F8F8',
+    cancelButtonBackground: '#A9A9A9',
+    });
+
   const handleLogout = () => {
     Confirm.show(
       "TuTurno",

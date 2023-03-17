@@ -298,7 +298,7 @@ const MyAccount = () => {
                                 handleDelete();
                               }}
                             >
-                              <i class="bi bi-trash3-fill"></i>
+                              <i className="bi bi-trash3-fill"></i>
                               &nbsp;&nbsp;Eliminar mi cuenta
                             </button>
                           </>
@@ -315,14 +315,14 @@ const MyAccount = () => {
                                 setIsEditing(false);
                               }}
                             >
-                              <i class="bi bi-x-circle"></i>
+                              <i className="bi bi-x-circle"></i>
                               &nbsp;&nbsp;Descartar Cambios
                             </button>
                             <button
                               type="submit"
                               className={style.btnEditsButton}
                             >
-                              <i class="bi bi-check-circle"></i>
+                              <i className="bi bi-check-circle"></i>
                               &nbsp;&nbsp;Confirmar Cambios
                             </button>
                           </>
