@@ -11,6 +11,7 @@ import "react-datepicker/dist/react-datepicker.css"
 import style from "../styles/Users.module.css";
 import axios from "axios";
 import { appointmentPicker } from "../features/appointment";
+import { getFullDate } from "../utils/getFullDate";
 //import parseJwt from "../hooks/parseJwt";
 
 const Calendar = () => {
@@ -19,9 +20,10 @@ const Calendar = () => {
   //const user = parseJwt(JSON.parse(localStorage.getItem('user')).data.token)
   const pickedDate = useSelector(state => state.appointment)
   const pickedBranchOffice = useSelector(state => state.branchOffice.clickedOffice)
-                          //|| JSON.parse(localStorage.getItem('branches')).branches
+  //hardcodeado, la idea seria que tome el valor del pickedBranchOffice.startTime.slice(0,2)
+  const [selectedDate, setSelectedDate] = useState(setHours(setMinutes(new Date(), 0), 10));
+  //const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const [selectedDate, setSelectedDate] = useState(new Date());
   //const [appointments, setAppointments] = useState([]);
   const [hhStart, setHhStart] = useState("");
   const [mmStart, setMmStart] = useState("");
@@ -32,7 +34,7 @@ const Calendar = () => {
   const [fewStockTimes, setFewStockTimes] = useState([])
   const [manyStockTimes, setManyStockTimes] = useState([])
 
-    // pedido GET al backend con una fecha y una sucursal
+  // pedido GET al backend con una fecha y una sucursal
   const loadAppointments = () => {
     axios.get('http://localhost:3001/api/availableAppointment', {
       headers: {
@@ -58,8 +60,6 @@ const Calendar = () => {
     })
     .catch(err => console.log('ERROR TRAYENDO ARREGLO DE HORARIOS ES ', err)) 
   };      
-
-  //const [timesExcluded, setTimesExcluded] = useState([])
   let timesExcluded
 
   const getExcludedTimes = () => {
@@ -82,6 +82,11 @@ const Calendar = () => {
     const day = getDay(date);
     return !pickedBranchOffice.daysOff.includes(day)
   }
+
+  const isOpen = (date) => {
+    const time = getDay(date);
+    return !pickedBranchOffice.startTime.includes(time)
+  }
     
   const handleColor = (time) => {
     const strTime = time.toTimeString().slice(0, 5)  
@@ -98,8 +103,7 @@ const Calendar = () => {
     const getExcludedTimes = () => {
       const dayTimes = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']
       dayTimes.forEach(e => {
-        if(Number(e) < Number(pickedBranchOffice.startTime.slice(0,2)) ||
-           Number(e) >= Number(pickedBranchOffice.endTime.slice(0,2)))
+        if(Number(e) < Number(pickedBranchOffice.startTime.slice(0,2)) || Number(e) >= Number(pickedBranchOffice.endTime.slice(0,2)))
            noStockTimes.push(e.concat(':00'), e.concat(':15'), e.concat(':30'), e.concat(':45'))
       })
       timesExcluded = noStockTimes.map(
@@ -124,10 +128,10 @@ const Calendar = () => {
       maxDate={addDays(new Date(), 21)}
       timeIntervals={15}
       selected={selectedDate}
+      filterTime={isOpen}
       onChange={(date) => {
         date.setMinutes(Math.round(date.getMinutes() / 20) * 15)
         setSelectedDate(date)
-        //if (date.getDate() == pickedDate.date)
         dispatch(appointmentPicker({date}))
         }}
         showTimeSelect
@@ -135,7 +139,7 @@ const Calendar = () => {
         minTime={setHours(setMinutes(selectedDate, mmStart), hhStart)}
         maxTime={setHours(setMinutes(selectedDate, mmEnd), hhEnd)}
         dateFormat="MMMM d, yyyy h:mm aa"
-        timeClassName={handleColor}
+        timeClassName={handleColor}       
         filterDate={isWeekday}
         excludeTimes={timesExcluded}
         excludeDates={disabledDates}
@@ -149,6 +153,8 @@ const Calendar = () => {
           </ul>)
         : (<></>)
       }
+       {console.log('DATE ELEGIDO ES', pickedDate)}
+       {console.log('EL MIN TIME ES ', hhStart)}
       </>
     );
 };

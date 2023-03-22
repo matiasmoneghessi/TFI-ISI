@@ -54,9 +54,7 @@ const CalendarOperator = () => {
       setNoStockTimes(arrNo)
     })
     .catch(err => console.log('ERROR TRAYENDO ARREGLO DE HORARIOS ES ', err)) 
-  };      
-
-  //const [timesExcluded, setTimesExcluded] = useState([])
+  };
   let timesExcluded
 
   const getExcludedTimes = () => {
@@ -127,17 +125,7 @@ const CalendarOperator = () => {
         filterDate={isWeekday}
         excludeTimes={timesExcluded}
         excludeDates={disabledDates}
-      />
-
-      {fewStockTimes.length
-        ? (<ul className={style.fewStock}>
-            <li>
-              últimos turnos disponibles
-            </li>
-          </ul>)
-        : (<></>)
-      }
-       
+      />       
       </>
     );
 };

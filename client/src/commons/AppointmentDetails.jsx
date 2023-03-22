@@ -13,24 +13,17 @@ import { useNavigate } from "react-router-dom";
 import { Report } from "notiflix/build/notiflix-report-aio";
 
 const AppointmentDetails = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch()                    
 
-
-  //// AGREGADO PARA FUNCIONALIDAD DE CAMBIAR TURNO /////////
-  const editApp = useSelector((state) => state.editApp);  ///
-  const navigate = useNavigate();                         ///
-  ///////////////////////////////////////////////////////////                       
-
-  //const initialSelectedDate = new Date()
- 
-//////////////////////LO QUE TENIA YAMI ANTES DEL MERGE 
+  //// AGREGADO PARA FUNCIONALIDAD DE CAMBIAR TURNO 
+  const editApp = useSelector((state) => state.editApp);
+  console.log("TURNO A EDITAR: ", editApp);
+  const navigate = useNavigate();
   const [hasClickedDetailsButton, setHasClickedDetailsButton] = useState(false)
   const pickedDate = useSelector(state => state.appointment)
   const pickedBranchOffice = useSelector(state => state.branchOffice.clickedOffice)
   const user = parseJwt(JSON.parse(localStorage.getItem('user')).data.token)
   //const [selectedDate, setSelectedDate] = useState(initialSelectedDate.getDate().toString());
-
-
 
   const [appointmentId, setAppointmentId] = useState("")
 
@@ -63,7 +56,6 @@ const AppointmentDetails = () => {
       })
       .catch(err => Report.failure(`${err}`))
   }
-
 
   const handleCancel = () => {
     axios.delete(`http://localhost:3001/api/appointment/${user.id}/myAppointment/deleteAppointment`,{data: {
