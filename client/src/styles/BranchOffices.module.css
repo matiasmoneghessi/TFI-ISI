@@ -1,11 +1,12 @@
 .mainContainer {
   height: calc(100vh - 62px);
   display: flex;
-  background-color: #3c3f50;
+  background-color: #FFFFFF;
 }
 
 .contentContainer {
-  background-color: white;
+  border: 10px solid #EFECEC;
+  border-radius: 5px;
   background-image: url("../../public/fondo.jpg");
   width: 100%;
   margin: 40px 60px;

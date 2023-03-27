@@ -5,14 +5,14 @@
 }
 
 .sideContainer {
-  background-color: #3c3f50;
+  background-color: #EFECEC;
   width: 350px;
-  color: white;
+  color: #000000;
   padding: 40px 40px;
 }
 
 .contentContainer {
-  background-color: white;
+  background-color: #000000;
   background-image: url("../../public/fondo.jpg");
   width: calc(100vw - 350px);
   display: flex;
@@ -40,6 +40,12 @@
   border-radius: 5px;
 }
 
+.userDetails {
+  padding: 5px;
+  border:  1px solid #000000;
+  border-radius: 5px;
+}
+
 .userDetails > ul {
   list-style-type: none;
   margin: 0;
@@ -60,16 +66,15 @@
   max-width: 324.466px;
   border: 1px solid grey;
   border-radius: 5px;
-
 }
 
 .agendados {
   margin-top: 20px;
-  color: aquamarine;
+  color: #000000;
 }
 
 .asistentes {
-  border: 2px solid white;
+  border: 2px solid #000000;
   border-radius: 5px;
   margin-top: 8px;
   padding: 7px;
