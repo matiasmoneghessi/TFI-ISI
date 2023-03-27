@@ -144,17 +144,6 @@ const Calendar = () => {
         excludeTimes={timesExcluded}
         excludeDates={disabledDates}
       />
-
-      {fewStockTimes.length
-        ? (<ul className={style.fewStock}>
-            <li>
-              últimos turnos disponibles
-            </li>
-          </ul>)
-        : (<></>)
-      }
-       {console.log('DATE ELEGIDO ES', pickedDate)}
-       {console.log('EL MIN TIME ES ', hhStart)}
       </>
     );
 };

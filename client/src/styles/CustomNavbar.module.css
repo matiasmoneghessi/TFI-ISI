@@ -1,3 +1,40 @@
 .navbar {
-  background-color: #262833 !important;
+  background-color: #efecec;
+}
+
+.userHeaderNavBar{
+  display: flex;
+  justify-content: center;
+  margin-right: 8px;
+	border-radius: 20px;
+	color: #000000;
+	font-size: 20px;
+	transition: transform 80ms ease-in;
+  cursor: context-menu;
+}
+.userHeaderNavBar:hover{
+  color: #000000;
+}
+
+.linkNavBar {
+  display: flex;
+  justify-content: center;
+  margin-right: 8px;
+	border-radius: 20px;
+	border: 1px solid #20A4F3;
+	background-color: #20A4F3;
+	color: #000000;
+	font-size: 15px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+.linkNavBar:active {
+	transform: scale(0.95);
+}
+.linkNavBar:focus {
+	outline: none;
+}
+.linkNavBar.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
 }

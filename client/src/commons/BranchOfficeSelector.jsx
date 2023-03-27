@@ -31,8 +31,9 @@ function BranchOfficeSelector() {
   const handleSelection = (e) => {
     e.preventDefault();
     const locationClon = e.target.innerText.toLowerCase()
-    const clickedOffice = branchOffices.find(branch => 
-        branch.location === locationClon);
+    const clickedOffice = branchOffices.find
+        (branch => branch.location === locationClon)
+        // (branch => branch.address === locationClon);
     dispatch(branchOfficePicker({clickedOffice}));
   }
 
@@ -49,17 +50,18 @@ function BranchOfficeSelector() {
   return (
     <>
       <div id={style.dropBranches}>
-        <DropdownButton variant="secondary" id="dropdown-basic-button" title="Seleccione una sucursal">
+        <label variant="secondary" id="dropdown-basic-button" title="Seleccione una sucursal">
           {branchOffices.map(e => (
             <Dropdown.Item 
               onClick={handleSelection}
               key={branchOffices.indexOf(e)}  
             >
               {e.location.toUpperCase()}
+              {/* {e.address.toUpperCase()}   */}
             </Dropdown.Item>
             )
           )}
-        </DropdownButton>
+        </label>
       </div>
 
       <>{pickedBranchOffice

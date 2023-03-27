@@ -92,23 +92,24 @@ const CustomNavbar = () => {
         </Navbar.Brand>
           }
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <a className="navbar-brand ms-5" href="#">
+          <a className={style.userHeaderNavBar}>
             Hola {capitalize(payload.fname)}
+            <i class="bi bi-hand-thumbs-up-fill"></i>
           </a>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               {role === "AD" ? (
                 <>
-                  <Nav.Link href="/offices" className="mx-3 fs-5">
+                  <Nav.Link href="/offices" className={style.linkNavBar}>
                     Sucursales
                   </Nav.Link>
-                  <Nav.Link href="/users" className="mx-3 fs-5">
+                  <Nav.Link href="/users" className={style.linkNavBar}>
                     Usuarios
                   </Nav.Link>
                 </>
               ) : role === "OP" ? (
                 <>
-                  <Nav.Link href="/turnos_operator" className="mx-3 fs-5">
+                  <Nav.Link href="/turnos_operator" className={style.linkNavBar}>
                     Turnos
                   </Nav.Link>
                 </>
@@ -117,18 +118,18 @@ const CustomNavbar = () => {
                   <Nav.Item className="navbar-brand ms-5">
                     {/* {countdown()} */}
                   </Nav.Item>
-                  <Nav.Link href="/calendar" className="mx-3 fs-5">
+                  <Nav.Link href="/calendar" className={style.linkNavBar}>
                     Reservar
                   </Nav.Link>
-                  <Nav.Link href="/myappointments" className="mx-3 fs-5">
+                  <Nav.Link href="/myappointments" className={style.linkNavBar}>
                     Mis Turnos
                   </Nav.Link>
                 </>
               )}
-              <Nav.Link href="/myaccount" className="mx-3 fs-5">
+              <Nav.Link href="/myaccount" className={style.linkNavBar}>
                 Mi Perfil
               </Nav.Link>
-              <Nav.Link onClick={handleLogout} className="mx-3 fs-5">
+              <Nav.Link onClick={handleLogout} className={style.linkNavBar}>
                 LOGOUT
               </Nav.Link>
             </Nav>
