@@ -10,6 +10,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import capitalize from "../hooks/capitalize";
 import { Confirm } from "notiflix/build/notiflix-confirm-aio";
+import Nav from "react-bootstrap/Nav";
 
 import style from "../styles/OfficeDetails.module.css";
 
@@ -150,6 +151,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
                       <div className={style.generalContainerTitle}>
                         <h5>Datos de Sucursal</h5>
                         <button
+                          type="button"
                           variant="secondary"
                           className={style.btnEditsButton}
                           onClick={() => {
@@ -219,6 +221,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
                       <div className={style.generalContainerTitle}>
                         <h5>Datos de contacto</h5>
                         <button
+                          type="button"
                           variant="secondary"
                           className={style.btnEditsButton}
                           onClick={() => {
@@ -285,6 +288,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
                       <div className={style.generalContainerTitle}>
                         <h5>Datos de Atención</h5>
                         <button
+                          type="button"
                           variant="secondary"
                           className={style.btnEditsButton}
                           onClick={() => {
@@ -395,6 +399,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
                       <div className={style.generalContainerTitle}>
                         <h5>Operadores asignados a la sucursal</h5>
                         <button
+                          type="button"
                           variant="secondary"
                           className={style.btnEditsButton}
                           onClick={() => {
@@ -472,14 +477,13 @@ const OfficeDetails = ({ office, selectOffice }) => {
                 </div>
                 <div className={style.buttonsContainer}>
                   <div className={style.startButtons}>
-                    <button
-                      variant="secondary"
+                    <a
                       className={style.btnEditsButton}
                       href="/offices"
                     >
                       <i className="bi bi-arrow-left-circle-fill"></i>
                       &nbsp;&nbsp;Volver
-                    </button>
+                    </a>
                   </div>
                   <div className={style.endButtons}>
                     {edited ? (

@@ -59,6 +59,8 @@
 	font-size: 13px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
+  padding: 8px;
+  text-decoration: none;
 }
 .btnEditsButton:active {
 	transform: scale(0.95);
@@ -69,6 +71,9 @@
 .btnEditsButton.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
+}
+.btnEditsButton:hover {
+	color: #FFFFFF;
 }
 
 .buttonsContainer {
@@ -92,4 +97,9 @@
 
 li {
   display: flex;
+}
+
+.endButtons {
+  display: flex;
+  flex-direction: row;
 }

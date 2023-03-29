@@ -159,7 +159,9 @@ const NewOffice = () => {
                         </li>
                       </ul>
                     </div>
-                    <div className={style.generalContainer}>
+                  </div>
+                  <div className={style.rightDataContainer}>
+                  <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
                         <h5>Datos de Atención</h5>
                       </div>
@@ -242,9 +244,6 @@ const NewOffice = () => {
                         </li>
                       </ul>
                     </div>
-                  </div>
-                  <div className={style.rightDataContainer}>
-                    <div className={style.generalContainer}></div>
                     <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
                         <h5>Operadores asignados a la sucursal</h5>
@@ -263,32 +262,32 @@ const NewOffice = () => {
                 </div>
                 <div className={style.buttonsContainer}>
                   <div className={style.startButtons}>
-                    <Button
+                    <a
                       variant="secondary"
-                      className={style.buttons}
+                      className={style.btnEditsButton}
                       href="/offices"
                     >
                       <i className="bi bi-arrow-left-circle-fill"></i>
                       &nbsp;&nbsp;Volver
-                    </Button>
+                    </a>
                   </div>
                   <div className={style.endButtons}>
-                    <Button
+                    <button
                       variant="secondary"
-                      className={style.buttons}
+                      className={style.btnEditsButton}
                       onClick={() => {
                         formik.resetForm();
                       }}
                     >
                       Borrar formulario
-                    </Button>
-                    <Button
+                    </button>
+                    <button
                       type="submit"
                       variant="secondary"
-                      className={style.buttons}
+                      className={style.btnEditsButton}
                     >
                       Crear sucursal
-                    </Button>
+                    </button>
                   </div>
                 </div>
               </Form>

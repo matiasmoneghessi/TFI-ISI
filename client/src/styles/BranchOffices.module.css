@@ -20,6 +20,34 @@
   margin: 40px;
 }
 
+.btnEditsButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	border-radius: 20px;
+	border: 1px solid #20A4F3;
+	background-color: #20A4F3;
+	color: #FFFFFF;
+	font-size: 13px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+  padding: 8px;
+  text-decoration: none;
+}
+.btnEditsButton:active {
+	transform: scale(0.95);
+}
+.btnEditsButton:focus {
+	outline: none;
+}
+.btnEditsButton.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+.btnEditsButton:hover {
+	color: #FFFFFF;
+}
+
 .buttonsContainer {
   width: calc(100%-60px);
   margin: 40px;
