@@ -158,16 +158,16 @@ router.post("/:id", async (req, res) => {
 });
 
 // (2) Usuario - Cancelar un turno.
-router.put("/:userId/myAppointment/remove", async (req, res) => {
-  const { userId } = req.params;
-  const appointmentId = req.body.id;
+router.put("/:appointmentId/myAppointment/remove", async (req, res) => {
+  const { appointmentId } = req.params;
+  const appId = req.body.id;
 
   try {
-    await Appointment.findOneAndUpdate({ _id: parseId(appointmentId) }, [
+    await Appointment.findOneAndUpdate({ _id: parseId(appId) }, [
       { $set: { available: { $eq: [false, "$available"] } } },
     ]);
     const appointmentCanceled = await Appointment.findOneAndUpdate(
-      { _id: parseId(appointmentId) },
+      { _id: parseId(appId) },
       [{ $set: { state: "cancelado" } }]
     );
     const branchOffice = await BranchOffice.findOne({
@@ -206,26 +206,22 @@ router.get("/:id/showAppointments", async (req, res) => {
   }
 });
 
-// (4) Operador - Confirmar un turno.
-router.put("/:operatorId/showAppointments", async (req, res) => {
-  const { operatorId } = req.params;
-  const appointmentId = req.body.id;
+// (4) Operador - Confirmar asistencia de un turno.
+router.put("/:appointmentId/myAppointment/asisted", async (req, res) => {
+  const {appointmentId} = req.params;
+  const appId = req.body.id;
   try {
-    const userOperator = await User.findOne({ _id: parseId(operatorId) });
-    if (userOperator.operator === true) {
-      await Appointment.findOneAndUpdate({ _id: parseId(appointmentId) }, [
-        { $set: { state: "asistido" } },
+      await Appointment.findOneAndUpdate({ _id: parseId(appId) }, [
+        { $set: { available: { $eq: [false, "$available"] } } },
       ]);
+      await Appointment.findOneAndUpdate({ _id: parseId(appId) }, 
+      [{ $set: { state: "asistido" } }]);
       res.status(200).json("Turno asistido/confirmado");
-    } else {
-      res
-        .send("You don't have permission to create a new branch office")
-        .status(404);
-    }
   } catch (err) {
     res.status(404).json(err);
   }
 });
+
 //get branch appointments
 router.get("/:id/showAppointmentsBranch", async (req, res) => {
   const { id } = req.params;

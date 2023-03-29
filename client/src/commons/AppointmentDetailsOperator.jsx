@@ -8,6 +8,7 @@ import { getFixedTime } from "../utils/getFixedTime";
 import parseJwt from "../hooks/parseJwt";
 import { Report } from "notiflix";
 import capitalize from "../hooks/capitalize";
+import { Confirm } from "notiflix/build/notiflix-confirm-aio";
 
 
 const AppointmentDetailsOperator = () => {
@@ -16,28 +17,56 @@ const AppointmentDetailsOperator = () => {
   const userBranch = userLocalStorage.branchOffice[0];
   const pickedDate = useSelector((state) => state.appointment);
   const pickedBranchOffice = useSelector((state) => state.branchOffice.clickedOffice);
+  const [load, setLoad] = useState(true);
   
-  const handleAssitance = (appointment) => {
-    axios.put(`http://localhost:3001/api/appointment/${userLocalStorage.id}/showAppointments`, {
-      id: (appointment)
-  })
-      .then(() => {
-        //appointments.splice(appointments.indexOf(appointment), 1)
+  const handleAssitance = (appointmentId) => {
+    console.log("ASISTIO TURNO ", appointmentId);
+    axios.put(`http://localhost:3001/api/appointment/${appointmentId}/myAppointment/asisted`, 
+    { id: appointmentId })
+      .then((res) => {
+        console.log(res, 'res');        
         Report.success('TuTurno', 'Se confirmó la asistencia del usuario', 'Ok');
       })
       .catch(err => Report.failure('TuTurno', {err}, 'Ok'))
   }
 
+  const handleDelete = (appointmentId) => {
+    Confirm.show(
+      "TuTurno",
+      "¿Confirma que desea cancelar este turno?",
+      "Si",
+      "No",
+      () => {
+        console.log("CANCELAR TURNO ", appointmentId);
+        axios
+          .put(
+            `http://localhost:3001/api/appointment/${appointmentId}/myAppointment/remove`,
+            { id: appointmentId }
+          )
+          .then((res) => {
+            console.log(res);
+            setLoad(!load);
+          })
+          .catch((err) => console.log(err));
+      }
+    );
+  };
+
+  const loadApps = () => {
+    let appointments;
+
+     axios
+       .get(`http://localhost:3001/api/appointment/${userBranch}/showAppointmentsBranch`)
+       .then((res) => {
+         appointments = res.data.data;
+         setData(appointments)
+         selectData.map((e) => {
+         })
+       })
+       
+  };
+
   useEffect(() => {
-    const loadApps = () => {
-      let appointments;
-       axios
-         .get(`http://localhost:3001/api/appointment/${userBranch}/showAppointmentsBranch`)
-         .then((res) => {
-           appointments = res.data.data;           
-           setData(appointments)
-         });
-    };
     loadApps();
 
   }, [pickedDate]);
@@ -64,16 +93,23 @@ const AppointmentDetailsOperator = () => {
                       {<li> Estado {e.state} </li>}
                       {<li> {getFullDate(pickedDate)} </li>}
                       {<li> Hora: {e.time}</li>}                     
-                                            
-                      <Button
-                        variant="secondary"
-                        className={style.sideButton}
-                        onClick={() => {
-                          handleAssitance(e.id);
-                        }}
-                      >
-                        Asistió
-                      </Button>
+                      <div className={style.buttonContainer}>
+                        <Button
+                          variant="secondary"
+                          className={style.sideButton}
+                          onClick={() => {handleAssitance(e._id);}}
+                          >
+                            Asistió
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          className={style.sideButton}
+                          onClick={() => handleDelete(e._id)}
+                          >
+                          Cancelar
+                        </Button>
+                      </div>                    
+                      
                     </div>
                   </>
                 );
