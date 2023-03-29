@@ -10,11 +10,11 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import capitalize from "../hooks/capitalize";
 import { Confirm } from "notiflix/build/notiflix-confirm-aio";
+import Nav from "react-bootstrap/Nav";
 
 import style from "../styles/OfficeDetails.module.css";
 
 const OfficeDetails = ({ office, selectOffice }) => {
-  // console.log(office);
 
   const token = JSON.parse(localStorage.getItem("user")).data.token;
   const payload = parseJwt(token);
@@ -91,10 +91,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
         return res.data.data;
       })
       .then((users) => {
-        console.log(office.operator[0]);
-        console.log(users);
         const op = users.filter((user) => user._id === office.operator[0])[0];
-        console.log(op);
         setOperator(op);
         setSelectedOperator(op);
       })
@@ -153,9 +150,10 @@ const OfficeDetails = ({ office, selectOffice }) => {
                     <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
                         <h5>Datos de Sucursal</h5>
-                        <Button
+                        <button
+                          type="button"
                           variant="secondary"
-                          className={style.buttons}
+                          className={style.btnEditsButton}
                           onClick={() => {
                             setEdited(true);
                             setIsEditingBranch(true);
@@ -163,7 +161,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
                         >
                           <i className="bi bi-pencil-square"></i>
                           &nbsp;&nbsp;Editar
-                        </Button>
+                        </button>
                       </div>
                       <ul>
                         <li>ID Sucursal:&emsp;{office._id}</li>
@@ -222,9 +220,10 @@ const OfficeDetails = ({ office, selectOffice }) => {
                     <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
                         <h5>Datos de contacto</h5>
-                        <Button
+                        <button
+                          type="button"
                           variant="secondary"
-                          className={style.buttons}
+                          className={style.btnEditsButton}
                           onClick={() => {
                             setEdited(true);
                             setIsEditingManager(true);
@@ -232,7 +231,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
                         >
                           <i className="bi bi-pencil-square"></i>
                           &nbsp;&nbsp;Editar
-                        </Button>
+                        </button>
                       </div>
                       <ul>
                         <li>
@@ -283,12 +282,15 @@ const OfficeDetails = ({ office, selectOffice }) => {
                         </li>
                       </ul>
                     </div>
-                    <div className={style.generalContainer}>
+                  </div>
+                  <div className={style.rightDataContainer}>
+                  <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
                         <h5>Datos de Atención</h5>
-                        <Button
+                        <button
+                          type="button"
                           variant="secondary"
-                          className={style.buttons}
+                          className={style.btnEditsButton}
                           onClick={() => {
                             setEdited(true);
                             setIsEditingAppointments(true);
@@ -296,7 +298,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
                         >
                           <i className="bi bi-pencil-square"></i>
                           &nbsp;&nbsp;Editar
-                        </Button>
+                        </button>
                       </div>
                       <ul>
                         <li>
@@ -393,15 +395,13 @@ const OfficeDetails = ({ office, selectOffice }) => {
                         </li>
                       </ul>
                     </div>
-                  </div>
-                  <div className={style.rightDataContainer}>
-                    <div className={style.generalContainer}></div>
                     <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
                         <h5>Operadores asignados a la sucursal</h5>
-                        <Button
+                        <button
+                          type="button"
                           variant="secondary"
-                          className={style.buttons}
+                          className={style.btnEditsButton}
                           onClick={() => {
                             setEdited(true);
                             setIsEditingOperators(true);
@@ -410,7 +410,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
                         >
                           <i className="bi bi-pencil-square"></i>
                           &nbsp;&nbsp;Editar
-                        </Button>
+                        </button>
                       </div>
                       <ul>
                         <li>
@@ -437,7 +437,6 @@ const OfficeDetails = ({ office, selectOffice }) => {
                                 <Dropdown.Item
                                   onClick={() => {
                                     setSelectedOperator();
-                                    console.log(selectedOperator);
                                   }}
                                   size="sm"
                                 >
@@ -448,7 +447,6 @@ const OfficeDetails = ({ office, selectOffice }) => {
                                     <Dropdown.Item
                                       onClick={() => {
                                         setSelectedOperator(operator);
-                                        console.log(selectedOperator);
                                       }}
                                       key={i}
                                     >
@@ -479,46 +477,38 @@ const OfficeDetails = ({ office, selectOffice }) => {
                 </div>
                 <div className={style.buttonsContainer}>
                   <div className={style.startButtons}>
-                    <Button
-                      variant="secondary"
-                      className={style.buttons}
+                    <a
+                      className={style.btnEditsButton}
                       href="/offices"
                     >
                       <i className="bi bi-arrow-left-circle-fill"></i>
                       &nbsp;&nbsp;Volver
-                    </Button>
+                    </a>
                   </div>
                   <div className={style.endButtons}>
                     {edited ? (
                       <>
-                        <Button
+                        <button
                           variant="secondary"
-                          className={style.buttons}
+                          className={style.btnEditsButton}
                           onClick={() => {
                             formik.resetForm();
                             stopEditing();
                           }}
                         >
                           Descartar Cambios
-                        </Button>
-                        <Button
+                        </button>
+                        <button
                           type="submit"
                           variant="secondary"
-                          className={style.buttons}
+                          className={style.btnEditsButton}
                         >
                           Confirmar Cambios
-                        </Button>
+                        </button>
                       </>
                     ) : (
                       <></>
                     )}
-                    <Button
-                      href="/newOffice"
-                      variant="secondary"
-                      className={style.buttons}
-                    >
-                      + Agregar sucursal
-                    </Button>
                   </div>
                 </div>
               </Form>

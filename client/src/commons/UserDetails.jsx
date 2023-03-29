@@ -4,7 +4,6 @@ import style from "../styles/Users.module.css";
 import capitalize from "../hooks/capitalize";
 
 const UserDetails = ({ user, handleDelete, handleRoleChange }) => {
-  console.log(user.lname);
 
   return user._id ? (
     <div className={style.userDetails}>

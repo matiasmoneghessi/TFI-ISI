@@ -13,8 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { Report } from "notiflix/build/notiflix-report-aio";
 
 const AppointmentDetails = () => {
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch()                    
 
   //// AGREGADO PARA FUNCIONALIDAD DE CAMBIAR TURNO 
   const editApp = useSelector((state) => state.editApp);
@@ -39,7 +38,6 @@ const AppointmentDetails = () => {
       appointId: editApp
     })
       .then((appointment) => {
-      console.log("todo el turno:", appointment.data)
       setAppointmentId(appointment.data._id)
       Report.info('TuTurno', 'Tenés 10 minutos para confirmar el turno', 'Ok')
       // if (editApp) navigate("/myappointments");

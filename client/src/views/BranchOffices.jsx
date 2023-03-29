@@ -244,13 +244,13 @@ const BranchOffices = ({ selectOffice }) => {
             />
           </div>
           <div className={style.buttonsContainer}>
-            <Button
+            <a
               href="/newOffice"
               variant="secondary"
-              className={style.buttons}
+              className={style.btnEditsButton}
             >
               + Agregar sucursal
-            </Button>
+            </a>
           </div>
         </div>
       </div>

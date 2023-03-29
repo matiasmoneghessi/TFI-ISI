@@ -22,6 +22,36 @@ const CustomNavbar = () => {
   const payload = parseJwt(token);
   const role = payload.admin ? "AD" : payload.operator ? "OP" : "CL";
 
+  Confirm.init({
+    className: 'notiflix-confirm',
+    width: '400px',
+    zindex: 4003,
+    position: 'center',
+    distance: '10px',
+    backgroundColor: '#f8f8f8',
+    borderRadius: '25px',
+    backOverlay: true,
+    backOverlayColor: 'rgba(0,0,0,0.5)',
+    rtl: false,
+    fontFamily: 'Quicksand',
+    cssAnimation: true,
+    cssAnimationDuration: 300,
+    cssAnimationStyle: 'fade',
+    plainText: true,
+    titleColor: '#20A4F3',
+    titleFontSize: '20px',
+    titleMaxLength: 34,
+    messageColor: '#1E1E1E',
+    messageFontSize: '16px',
+    messageMaxLength: 110,
+    buttonsFontSize: '15px',
+    buttonsMaxLength: 34,
+    okButtonColor: '#F8F8F8',
+    okButtonBackground: '#20A4F3',
+    cancelButtonColor: '#F8F8F8',
+    cancelButtonBackground: '#A9A9A9',
+    });
+
   const handleLogout = () => {
     Confirm.show(
       "TuTurno",
@@ -62,23 +92,24 @@ const CustomNavbar = () => {
         </Navbar.Brand>
           }
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <a className="navbar-brand ms-5" href="#">
+          <a className={style.userHeaderNavBar}>
             Hola {capitalize(payload.fname)}
+            <i class="bi bi-hand-thumbs-up-fill"></i>
           </a>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               {role === "AD" ? (
                 <>
-                  <Nav.Link href="/offices" className="mx-3 fs-5">
+                  <Nav.Link href="/offices" className={style.linkNavBar}>
                     Sucursales
                   </Nav.Link>
-                  <Nav.Link href="/users" className="mx-3 fs-5">
+                  <Nav.Link href="/users" className={style.linkNavBar}>
                     Usuarios
                   </Nav.Link>
                 </>
               ) : role === "OP" ? (
                 <>
-                  <Nav.Link href="/turnos_operator" className="mx-3 fs-5">
+                  <Nav.Link href="/turnos_operator" className={style.linkNavBar}>
                     Turnos
                   </Nav.Link>
                 </>
@@ -87,18 +118,18 @@ const CustomNavbar = () => {
                   <Nav.Item className="navbar-brand ms-5">
                     {/* {countdown()} */}
                   </Nav.Item>
-                  <Nav.Link href="/calendar" className="mx-3 fs-5">
+                  <Nav.Link href="/calendar" className={style.linkNavBar}>
                     Reservar
                   </Nav.Link>
-                  <Nav.Link href="/myappointments" className="mx-3 fs-5">
+                  <Nav.Link href="/myappointments" className={style.linkNavBar}>
                     Mis Turnos
                   </Nav.Link>
                 </>
               )}
-              <Nav.Link href="/myaccount" className="mx-3 fs-5">
+              <Nav.Link href="/myaccount" className={style.linkNavBar}>
                 Mi Perfil
               </Nav.Link>
-              <Nav.Link onClick={handleLogout} className="mx-3 fs-5">
+              <Nav.Link onClick={handleLogout} className={style.linkNavBar}>
                 LOGOUT
               </Nav.Link>
             </Nav>

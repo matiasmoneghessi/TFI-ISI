@@ -25,31 +25,17 @@ function BranchOfficeSelector() {
   const [branchOffices, setBranchOffices] = useState([])
   //const branchOffices = JSON.parse(localStorage.getItem('branches')).branches
   
-  console.log('LISTA DE SUCURSALES ', branchOffices)
-  
   const pickedBranchOffice = useSelector(state => state.branchOffice.clickedOffice)
   const user = parseJwt(JSON.parse(localStorage.getItem('user')).data.token)
-
-  console.log('EL USER ES ', user)
-  
-  console.log('ES ADMIN ? ', user.admin)
-  console.log('ES OPERADOR ? ', user.operator)
 
   const handleSelection = (e) => {
     e.preventDefault();
     const locationClon = e.target.innerText.toLowerCase()
-    const clickedOffice = branchOffices.find(branch => 
-        branch.location === locationClon);
+    const clickedOffice = branchOffices.find
+        (branch => branch.location === locationClon)
+        // (branch => branch.address === locationClon);
     dispatch(branchOfficePicker({clickedOffice}));
   }
-
-  console.log('LA SUC DEL OPERADOR ES ', user.branchOffice[0])
-  console.log('OFICINAS ', branchOffices)
-  
-   
-  
-
-  console.log('LA SUCURSAL SETEADA GLOBALMENTE ES ', pickedBranchOffice)  
 
   const getBranchOffices = async () => {   
     const res = await axios.get('http://localhost:3001/api/branchOffice/showBranch');     
@@ -57,7 +43,6 @@ function BranchOfficeSelector() {
     }
         
   useEffect(() => {
-    console.log('ESTAMOS EN EL USEEFFECT')
     getBranchOffices()
     //dispatch(branchOfficesGetter())
   }, [])
@@ -65,17 +50,18 @@ function BranchOfficeSelector() {
   return (
     <>
       <div id={style.dropBranches}>
-        <DropdownButton variant="secondary" id="dropdown-basic-button" title="Seleccione una sucursal">
+        <label variant="secondary" id="dropdown-basic-button" title="Seleccione una sucursal">
           {branchOffices.map(e => (
             <Dropdown.Item 
               onClick={handleSelection}
               key={branchOffices.indexOf(e)}  
             >
               {e.location.toUpperCase()}
+              {/* {e.address.toUpperCase()}   */}
             </Dropdown.Item>
             )
           )}
-        </DropdownButton>
+        </label>
       </div>
 
       <>{pickedBranchOffice

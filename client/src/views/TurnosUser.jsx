@@ -17,14 +17,9 @@ const TurnosUsers = () => {
   /* const initialBranchOffice = {} //definir cómo nos llega la suc seleccionada en Welcome
   const initialDate = getInitialDate()
   const initialTime = ""
-
   const [branchOffice, setBranchOffice] = useState(initialBranchOffice)
   const [date, setDate] = useState(initialDate)
-  const [time, setTime] = useState(initialTime)
-
-  console.log('SUCURSAL ES ', branchOffice)
-  console.log('DATE ES ', date)
-  console.log('TIME ES ', time) */
+  const [time, setTime] = useState(initialTime)*/
 
   return (
     // condicionar el renderizado del fragment de abajo a que haya un usuario logueado. Si no, redirigir a /login

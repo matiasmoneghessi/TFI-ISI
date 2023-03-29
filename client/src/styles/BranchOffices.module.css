@@ -1,11 +1,12 @@
 .mainContainer {
   height: calc(100vh - 62px);
   display: flex;
-  background-color: #3c3f50;
+  background-color: #FFFFFF;
 }
 
 .contentContainer {
-  background-color: white;
+  border: 10px solid #EFECEC;
+  border-radius: 5px;
   background-image: url("../../public/fondo.jpg");
   width: 100%;
   margin: 40px 60px;
@@ -17,6 +18,34 @@
 .tableContainer {
   width: calc(100%-60px);
   margin: 40px;
+}
+
+.btnEditsButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	border-radius: 20px;
+	border: 1px solid #20A4F3;
+	background-color: #20A4F3;
+	color: #FFFFFF;
+	font-size: 13px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+  padding: 8px;
+  text-decoration: none;
+}
+.btnEditsButton:active {
+	transform: scale(0.95);
+}
+.btnEditsButton:focus {
+	outline: none;
+}
+.btnEditsButton.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+.btnEditsButton:hover {
+	color: #FFFFFF;
 }
 
 .buttonsContainer {

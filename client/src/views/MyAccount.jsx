@@ -20,7 +20,6 @@ const MyAccount = () => {
 
   const token = JSON.parse(localStorage.getItem("user")).data.token;
   const payload = parseJwt(token);
-  console.log(payload);
 
   useEffect(() => {
     loadUserData();
@@ -33,7 +32,6 @@ const MyAccount = () => {
       .get(`http://localhost:3001/api/users/me/${payload.id}`)
       // .then((res) => setUserData(res.data))
       .then((res) => {
-        console.log(res.data);
         setUserData(res.data);
       })
       .catch((err) => console.log(err));
@@ -49,7 +47,6 @@ const MyAccount = () => {
         axios
           .put(`http://localhost:3001/api/users/me/${payload.id}`, values)
           .then((res) => {
-            console.log(res);
             loadUserData();
           })
           .catch((err) => console.log(err));
@@ -103,19 +100,18 @@ const MyAccount = () => {
                 <div className={style.userDetails}>
                   <ul className={style.listProfilePage}>
 
-                    <div className={style.containerProfileTitle}>
-                      <h3>Perfil</h3>
-                      <li>
-                        ID:&emsp;{payload.id}
-                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                      </li>
-                      <li>
-                        Rol:{" "}
-                        {userData.admin ? "AD" : userData.operator ? "OP" : "CL"}
-                      </li>
-                    </div>
-
                     <div className={style.containerProfileInfo}>
+                      <div className={style.containerProfileTitle}>
+                        <h3>Perfil</h3>
+                        <li>
+                          ID:&emsp;{payload.id}
+                          &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        </li>
+                        <li>
+                          Rol:{" "}
+                          {userData.admin ? "AD" : userData.operator ? "OP" : "CL"}
+                        </li>
+                      </div>
                       <h3>Datos</h3>
                       <li>
                         Apellido:&emsp;
@@ -301,7 +297,7 @@ const MyAccount = () => {
                                 handleDelete();
                               }}
                             >
-                              <i class="bi bi-trash3-fill"></i>
+                              <i className="bi bi-trash3-fill"></i>
                               &nbsp;&nbsp;Eliminar mi cuenta
                             </button>
                           </>
@@ -318,14 +314,14 @@ const MyAccount = () => {
                                 setIsEditing(false);
                               }}
                             >
-                              <i class="bi bi-x-circle"></i>
+                              <i className="bi bi-x-circle"></i>
                               &nbsp;&nbsp;Descartar Cambios
                             </button>
                             <button
                               type="submit"
                               className={style.btnEditsButton}
                             >
-                              <i class="bi bi-check-circle"></i>
+                              <i className="bi bi-check-circle"></i>
                               &nbsp;&nbsp;Confirmar Cambios
                             </button>
                           </>
