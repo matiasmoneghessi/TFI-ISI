@@ -509,13 +509,6 @@ const OfficeDetails = ({ office, selectOffice }) => {
                     ) : (
                       <></>
                     )}
-                    <button
-                      href="/newOffice"
-                      variant="secondary"
-                      className={style.btnEditsButton}
-                    >
-                      + Agregar sucursal
-                    </button>
                   </div>
                 </div>
               </Form>
