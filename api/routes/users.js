@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const User = require("../models/User");
+const Appointment = require("../models/Appointment");
 const parseId = require("../utils/functions");
 //const paginatedResults = require("../utils/pagination");
 
@@ -39,17 +40,6 @@ router.get("/me/:id", (req, res) => {
   });
 });
 
-// (3) Administrador - Muestra todos los usuarios con el middleware Pagination. (Comentada porque no se utilizaría)
-/*router.get("/admin/showUsers", paginatedResults(User,3), (req, res) => {
-  User.find({}, (err) => {
-    if (err) {
-      res.json({ error: "Error" });
-    } else {
-      res.json(res.paginatedResults);
-    }
-  });
-});*/
-
 // (4) Administrador - Muestra todos los usuarios.
 router.get("/admin/:adminId/showUsers", async (req, res) => {
   const { adminId } = req.params;
@@ -69,18 +59,12 @@ router.get("/admin/:adminId/showUsers", async (req, res) => {
 });
 
 // (5) Administrador - Elimina usuarios.
-router.delete("/admin/:adminId/delete/:id", async (req, res) => {
-  const { adminId } = req.params;
-  const userAdmin = await User.findOne({ _id: parseId(adminId) });
+router.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
-
   try {
-    if (userAdmin.admin === true && adminId !== id) {
-      await User.deleteOne({ _id: parseId(id) });
-      res.sendStatus(204);
-    } else if (adminId === id) {
-      res.send("You can't remove the permission yourself").status(404);
-    }
+    await Appointment.deleteMany({user: parseId(id) });
+    await User.deleteOne({ _id: parseId(id) });
+    res.sendStatus(204);  
   } catch {
     res.sendStatus(500);
   }
