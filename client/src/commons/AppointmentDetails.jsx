@@ -17,7 +17,6 @@ const AppointmentDetails = () => {
 
   //// AGREGADO PARA FUNCIONALIDAD DE CAMBIAR TURNO 
   const editApp = useSelector((state) => state.editApp);
-  console.log("TURNO A EDITAR: ", editApp);
   const navigate = useNavigate();
   const [hasClickedDetailsButton, setHasClickedDetailsButton] = useState(false)
   const pickedDate = useSelector(state => state.appointment)
@@ -39,10 +38,10 @@ const AppointmentDetails = () => {
     })
       .then((appointment) => {
       setAppointmentId(appointment.data._id)
-      Report.info('TuTurno', 'Tenés 10 minutos para confirmar el turno', 'Ok')
+      Report.info('TuTurno', 'Tenés 3 minutos para confirmar el turno', 'Ok')
       // if (editApp) navigate("/myappointments");
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err, 'err makina'))
   }
   const handleConfirm = () => {
     axios.put(`http://localhost:3001/api/appointment/${user.id}/myAppointment/confirmed`, {
@@ -54,7 +53,10 @@ const AppointmentDetails = () => {
         Report.success('TuTurno', 'El turno fue confirmado', 'Ok')
         navigate("/myappointments")
       })
-      .catch(err => Report.failure(`${err}`))
+      .catch(err => Report.failure('Turno ya dado','Turno no disponible', 'Ok', () => {
+        handleCancel();
+      }))
+      
   }
 
   const handleCancel = () => {

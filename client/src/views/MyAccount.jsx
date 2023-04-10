@@ -64,7 +64,7 @@ const MyAccount = () => {
       () => {
         axios
           .delete(
-            `http://localhost:3001/api/users/admin/63d6ce946479c88692cf4f38/delete/${payload.id}`
+            `http://localhost:3001/api/users/delete/${payload.id}`            
           )
           .then((res) => {
             localStorage.removeItem("user");
