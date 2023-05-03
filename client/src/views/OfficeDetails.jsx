@@ -118,6 +118,8 @@ const OfficeDetails = ({ office, selectOffice }) => {
 
   return (
     <>
+     {/* DATOS DE SUCURSAL */}
+
       <CustomNavbar />
       <div className={style.mainContainer}>
         <Formik
@@ -217,6 +219,9 @@ const OfficeDetails = ({ office, selectOffice }) => {
                         </li>
                       </ul>
                     </div>
+                    
+                    {/* DATOS DEL CONTACTO */}
+
                     <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
                         <h5>Datos de contacto</h5>
@@ -283,6 +288,9 @@ const OfficeDetails = ({ office, selectOffice }) => {
                       </ul>
                     </div>
                   </div>
+
+                  {/* DATOS DE ATENCION */}
+                  
                   <div className={style.rightDataContainer}>
                   <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
@@ -395,6 +403,9 @@ const OfficeDetails = ({ office, selectOffice }) => {
                         </li>
                       </ul>
                     </div>
+
+                    {/* OPERADORES ASIGNADOS A LA SUCURSAL */}
+
                     <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
                         <h5>Operadores asignados a la sucursal</h5>
