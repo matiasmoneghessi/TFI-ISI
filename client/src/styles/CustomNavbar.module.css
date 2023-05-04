@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #EFECEC;
+  background-color: #20A4F3;
 }
 
 .userHeaderNavBar{
@@ -11,6 +11,7 @@
 	font-size: 20px;
 	transition: transform 80ms ease-in;
   cursor: context-menu;
+  text-decoration: none;
 }
 .userHeaderNavBar:hover{
   color: #000000;

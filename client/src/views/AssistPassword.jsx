@@ -41,16 +41,16 @@ function AssistPassword() {
   return (
     <div className={style.mainContainer}>
       <div className={style.logoContainer}>
-        {/* <img
+         <img
           className={style.largeLogo}
-          src={require("../images/1.png")}
+          src={require("../images/TuTu1.png")}
           alt="TuTurno"
         />
         <img
           className={style.smallLogo}
-          src={require("../images/2.png")}
+          src={require("../images/TuTu1.png")}
           alt="TuTurno"
-        /> */}
+        /> 
       </div>
       <div className={style.contentContainer}>
         <div>

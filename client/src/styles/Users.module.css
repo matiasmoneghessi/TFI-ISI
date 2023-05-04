@@ -13,7 +13,7 @@
 
 .contentContainer {
   background-color: #000000;
-  background-image: url("../../public/fondo.jpg");
+  background-image: url("../../public/30.jpg");
   width: calc(100vw - 350px);
   display: flex;
   justify-content: center;

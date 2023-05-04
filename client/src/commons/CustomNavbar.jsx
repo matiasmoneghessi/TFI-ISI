@@ -74,13 +74,13 @@ const CustomNavbar = () => {
       <Navbar variant="dark" expand="lg" className={style.navbar}>
         <Container fluid className="mx-4">
           {!payload.admin && !payload.operator ? 
-          <Navbar.Brand href="/welcome">
-            {/* <img 
-              src={require("../images/3.png")}
+          <Navbar.Brand href="/calendar">
+             <img 
+              src={require("../images/TuTu3.png")}
               height="36px"
               className="d-inline-block align-top"
               alt="Logo mi turno"
-            /> */}
+            />
           </Navbar.Brand> : 
           <Navbar.Brand href="/users">
           {/* <img 
@@ -93,8 +93,8 @@ const CustomNavbar = () => {
           }
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <a className={style.userHeaderNavBar}>
-            Hola {capitalize(payload.fname)}
-            <i class="bi bi-hand-thumbs-up-fill"></i>
+            Hola {capitalize(payload.fname)} &nbsp;
+            <i class="bi bi-clipboard-heart"></i>
           </a>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">

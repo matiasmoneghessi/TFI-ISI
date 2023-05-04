@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import CustomNavbar from "../commons/CustomNavbar";
-import Button from "react-bootstrap/esm/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import parseJwt from "../hooks/parseJwt";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +9,6 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import capitalize from "../hooks/capitalize";
 import { Confirm } from "notiflix/build/notiflix-confirm-aio";
-import Nav from "react-bootstrap/Nav";
 
 import style from "../styles/OfficeDetails.module.css";
 

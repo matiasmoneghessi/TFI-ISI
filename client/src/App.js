@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import TurnosUsers from "./views/TurnosUser";
-import General from "./views/General";
 import Register from "./views/Register";
 import Login from "./views/Login";
 import AssistPassword from "./views/AssistPassword";
@@ -27,7 +26,6 @@ function App() {
     <div className={style.App}>
       <Routes>
         <Route path="/register" element={<Register />} />
-        <Route path="/layout" element={<General />} />
         <Route path="/users" element={<Users />} />
         <Route path="/login" element={<Login />} />
         <Route path="/assist_password" element={<AssistPassword />} />
