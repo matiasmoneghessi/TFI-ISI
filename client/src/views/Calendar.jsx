@@ -11,14 +11,12 @@ import "react-datepicker/dist/react-datepicker.css"
 import style from "../styles/Users.module.css";
 import axios from "axios";
 import { appointmentPicker } from "../features/appointment";
-import { getFullDate } from "../utils/getFullDate";
 //import parseJwt from "../hooks/parseJwt";
 
 const Calendar = () => {
 
   const dispatch = useDispatch()
   //const user = parseJwt(JSON.parse(localStorage.getItem('user')).data.token)
-  const pickedDate = useSelector(state => state.appointment)
   const pickedBranchOffice = useSelector(state => state.branchOffice.clickedOffice)
   //hardcodeado, la idea seria que tome el valor del pickedBranchOffice.startTime.slice(0,2)
   const [selectedDate, setSelectedDate] = useState(setHours(setMinutes(new Date(), 0), 10));
@@ -119,31 +117,34 @@ const Calendar = () => {
   }, [selectedDate, pickedBranchOffice]);
 
   return (
-    <>
-    <DatePicker
-      inline
-      locale='es'
-      calendarStartDay={0}
-      minDate={new Date()}
-      maxDate={addDays(new Date(), 21)}
-      timeIntervals={15}
-      selected={selectedDate}
-      filterTime={isOpen}
-      onChange={(date) => {
-        date.setMinutes(Math.round(date.getMinutes() / 20) * 15)
-        setSelectedDate(date)
-        dispatch(appointmentPicker({date}))
-        }}
+    <>    
+      <DatePicker        
+        useWeekdaysShort={true}        
+        dayClassName={() => style.calendarDAY}
+        calendarClassName={style.calendarStyle}
+        inline
+        locale='es'
+        calendarStartDay={0}
+        minDate={new Date()}
+        maxDate={addDays(new Date(), 21)}
+        timeIntervals={15}
+        selected={selectedDate}
+        filterTime={isOpen}
+        onChange={(date) => {
+          date.setMinutes(Math.round(date.getMinutes() / 20) * 15)
+          setSelectedDate(date)
+          dispatch(appointmentPicker({date}))
+          }}
         showTimeSelect
-        timeCaption="horarios"
-        minTime={setHours(setMinutes(selectedDate, mmStart), hhStart)}
-        maxTime={setHours(setMinutes(selectedDate, mmEnd), hhEnd)}
-        dateFormat="MMMM d, yyyy h:mm aa"
-        timeClassName={handleColor}       
-        filterDate={isWeekday}
-        excludeTimes={timesExcluded}
-        excludeDates={disabledDates}
-      />
+          timeCaption="Horarios"
+          minTime={setHours(setMinutes(selectedDate, mmStart), hhStart)}
+          maxTime={setHours(setMinutes(selectedDate, mmEnd), hhEnd)}
+          dateFormat="MMMM d, yyyy h:mm aa"
+          timeClassName={handleColor}
+          filterDate={isWeekday}
+          excludeTimes={timesExcluded}
+          excludeDates={disabledDates}        
+          />        
       </>
     );
 };

@@ -1,19 +1,16 @@
 .mainContainer {
   height: calc(100vh - 62px);
   display: flex;
-
+  background-image: url("../../public/30.jpg");
 }
 
 .sideContainer {
-  background-color: #EFECEC;
   width: 350px;
   color: #000000;
   padding: 40px 40px;
 }
 
 .contentContainer {
-  background-color: #000000;
-  background-image: url("../../public/30.jpg");
   width: calc(100vw - 350px);
   display: flex;
   justify-content: center;
@@ -30,23 +27,22 @@
   text-align: center;
 }
 
-.calendarContainer {
-  padding: 20px;
-  width: 50%;
-  margin: 40px auto;
-  background-color: #67e9ee;
-  text-align: center;
-  border: 2px solid #262833;
-  border-radius: 5px;
+.calendarStyle {
+  border-radius: 10px !important;
+  border:  4px solid #ffffff!important;
+  font-family: 'Montserrat', sans-serif!important;
 }
 
 .userDetails {
+  background-color: #FFFFFF;
   padding: 5px;
-  border:  1px solid #000000;
-  border-radius: 5px;
+  border:  4px solid #000000;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .userDetails > ul {
+  text-align: left;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -57,24 +53,13 @@
   margin-right: 10px;
 }
 
-.fewStock {
-  text-align: center;
-  margin: 8px auto;
-  color: #ffc107;
-  font-size: medium;
-  background-color: #6c757d;
-  max-width: 324.466px;
-  border: 1px solid grey;
-  border-radius: 5px;
-}
-
 .agendados {
   margin-top: 20px;
   color: #000000;
 }
 
 .asistentes {
-  border: 2px solid #000000;
+  border: 1px solid #20A4F3;
   border-radius: 5px;
   margin-top: 8px;
   padding: 7px;

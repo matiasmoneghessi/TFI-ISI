@@ -15,11 +15,8 @@ import { appointmentPicker } from "../features/appointment";
 const CalendarOperator = () => {
 
   const dispatch = useDispatch()
-  //const pickedDate = useSelector(state => state.appointment)
   const pickedBranchOffice = useSelector(state => state.branchOffice.clickedOffice)
-
   const [selectedDate, setSelectedDate] = useState(new Date());
-  //const [appointments, setAppointments] = useState([]);
   const [hhStart, setHhStart] = useState("");
   const [mmStart, setMmStart] = useState("");
   const [hhEnd, setHhEnd] = useState("");
@@ -103,6 +100,9 @@ const CalendarOperator = () => {
   return (
     <>
     <DatePicker
+      useWeekdaysShort={true}
+      dayClassName={() => style.calendarDAY}
+      calendarClassName={style.calendarStyle}
       inline
       locale='es'
       calendarStartDay={0}
@@ -117,7 +117,7 @@ const CalendarOperator = () => {
         dispatch(appointmentPicker({date}))
         }}
         showTimeSelect
-        timeCaption="horarios"
+        timeCaption="Horarios"
         minTime={setHours(setMinutes(selectedDate, mmStart), hhStart)}
         maxTime={setHours(setMinutes(selectedDate, mmEnd), hhEnd)}
         dateFormat="MMMM d, yyyy h:mm aa"
