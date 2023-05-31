@@ -110,7 +110,10 @@ const CustomNavbar = () => {
               ) : role === "OP" ? (
                 <>
                   <Nav.Link href="/turnos_operator" className={style.linkNavBar}>
-                    Turnos
+                    Calendario
+                  </Nav.Link>
+                  <Nav.Link href="/turnos_opFullView" className={style.linkNavBar}>
+                    Turnos 
                   </Nav.Link>
                 </>
               ) : (

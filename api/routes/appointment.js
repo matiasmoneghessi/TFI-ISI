@@ -234,6 +234,7 @@ router.get("/:id/showAppointmentsBranch", async (req, res) => {
       }
     })
       .populate("user")
+      .populate("branchOffice")
       .clone()
       .exec();
   } catch (err) {
