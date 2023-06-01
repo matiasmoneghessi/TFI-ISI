@@ -54,32 +54,24 @@ const TurnosOpFullView = () => {
       )
       .then((res) => {
         appointments = res.data.data;
-        console.log(appointments,'appo')
         setAppsRaw(appointments);
       })
       .then(() => {
-        const appsConstructor = appointments.map((appointment, i) => {
-           
+        const appsConstructor = appointments.map((appointment, i) => {           
           const year = parseInt(appointment.year);
           const month = parseInt(appointment.month) + 1;
           const day = parseInt(appointment.date);
           const date = new Date(year, month, day);
-          const pacienteNombre = appointment.user.map((user, i) => {
-            
-            return {
-              pacienteName:user.fname,
-              pacienteLastname: user.lname
-            }
-           })
-           
-           console.log(appointment.user[0].fname,'pacientename')
+          
           return {
             _id: appointment._id,
             id: appointment._id.slice(-4),
             date:
               date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear(),
             time: appointment.time + " hs",
-            paciente: appointment.user[0].fname,
+            paciente: capitalize(appointment.user[0].fname + " " + appointment.user[0].lname),             
+            pacienteTel: appointment.user[0].phone,
+            pacienteEmail: appointment.user[0].email,            
             status: appointment.state ? capitalize(appointment.state) : "",            
             actions:
               appointment.state === undefined ||
@@ -156,8 +148,7 @@ const TurnosOpFullView = () => {
     );
   };
 
-  const handleAssitance = (appointmentId) => {
-    console.log("ASISTIO TURNO ", appointmentId);
+  const handleAssitance = (appointmentId) => {    
     axios
       .put(
         `http://localhost:3001/api/appointment/${appointmentId}/myAppointment/asisted`,
@@ -273,7 +264,7 @@ const TurnosOpFullView = () => {
       align: "center",
     },
     {
-      dataField: "office",
+      dataField: "paciente",
       text: "Paciente",
       headerAlign: "center",
       align: "center",
