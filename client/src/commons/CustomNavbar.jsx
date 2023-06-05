@@ -115,6 +115,9 @@ const CustomNavbar = () => {
                   <Nav.Link href="/turnos_opFullView" className={style.linkNavBar}>
                     Turnos 
                   </Nav.Link>
+                  <Nav.Link href="/CajaDiaria" className={style.linkNavBar}>
+                    Caja 
+                  </Nav.Link>
                 </>
               ) : (
                 <>
