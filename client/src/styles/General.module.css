@@ -111,6 +111,14 @@ h2 {
   align-items: center;
 }
 
+.containerBoxForgotPass {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 .headerLogIn {
   display: flex;
   justify-content: center;
@@ -128,6 +136,16 @@ h2 {
   height: 70%;
 }
 
+.midContainerFP {
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
+  overflow: hidden;
+  justify-content: center;
+  height: 70%;
+  width: 25%;
+}
+
 .midContainerSignIn {
   display: flex;
   flex-direction: column;
@@ -138,6 +156,25 @@ h2 {
   overflow: hidden;
   width: 50%;
   padding: 15px;
+}
+
+.midContainerForgotPass {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  width: 65%;
+  padding: 15px;
+}
+
+.btnLinkForgotPass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .midPageLogIn {
@@ -151,6 +188,14 @@ h2 {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.formPageForgotPass {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .midContainerSignUp {
@@ -245,6 +290,30 @@ h2 {
 	border-color: #FFFFFF;
 }
 
+.btnForgotPas {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+	border-radius: 20px;
+	border: 1px solid #20A4F3;
+	background-color: #20A4F3;
+	color: #000000;
+	font-size: 10px;
+	font-weight: bold;
+	padding: 10px 15px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+.btnForgotPas:focus {
+	outline: none;
+}
+.btnForgotPas.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
 .btnSocialMedia {
   font-size: 35px;
 }
@@ -258,6 +327,29 @@ h2 {
   color: white;
 }
 .linkPageRegister:active {
+	transform: scale(0.95);
+}
+
+.linkPageFP{
+  display: flex;
+  justify-content: center;
+	border-radius: 20px;
+	border: 1px solid #20A4F3;
+	background-color: #20A4F3;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+  color: black;
+}
+.linkPageFP:hover{
+  margin: 0;
+  color: black;
+}
+.linkPageFP:active {
 	transform: scale(0.95);
 }
 

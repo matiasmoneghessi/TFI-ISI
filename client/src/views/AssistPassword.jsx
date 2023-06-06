@@ -39,28 +39,17 @@ function AssistPassword() {
   };
 
   return (
-    <div className={style.mainContainer}>
-      <div className={style.logoContainer}>
-         <img
-          className={style.largeLogo}
-          src={require("../images/TuTu1.png")}
-          alt="TuTurno"
-        />
-        <img
-          className={style.smallLogo}
-          src={require("../images/TuTu1.png")}
-          alt="TuTurno"
-        /> 
-      </div>
-      <div className={style.contentContainer}>
-        <div>
-          <h2>Asistencia</h2>
-
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formEmail">
+    <div className={style.containerBoxForgotPass}>
+      <div className={style.midContainerFP}>
+        <div className={style.midContainerForgotPass}>
+          <div className={style.headerLogIn}>
+            <h1 className={style.labelsTitulos}>Asistencia</h1>
+          </div>
+          <Form className={style.formPageForgotPass} onSubmit={handleSubmit}>
+            <Form.Group className="mb-2" controlId="formEmail">
               <Form.Label>Email para recuperar contraseña</Form.Label>
               <Form.Control
-                placeholder="Ingrese su email (recibirá un correo con instrucciones)"
+                placeholder="Ingrese su email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -69,22 +58,23 @@ function AssistPassword() {
             </Form.Group>
 
             <div className={style.boton}>
-              <Button variant="secondary" type="submit">
+              <button className={style.btnSignIn} type="submit">
                 Continuar
-              </Button>
+              </button>
             </div>
 
-            <div className={style.unregistred}>
-              <p className={style.p}>Ya recordé mi contraseña</p>
-              <Link to="/login">Ir a login</Link>
-            </div>
-
-            <div className={style.unregistred}>
-              <p className={style.p}>Aún no tengo una cuenta</p>
-              <Link to="/register">Registrarme</Link>
-              {/* <Button variant="secondary" onClick={() => navigate("/register")}>
-            Registrarme
-          </Button>  */}
+            <div className={style.btnLinkForgotPass}>
+              <div className={style.boton}>
+                <Link className={style.linkPageFP} to="/login">
+                  Tengo cuenta
+                </Link>
+              </div>
+              
+              <div className={style.boton}>
+              <Link className={style.linkPageFP} to="/register">
+                Registrarme
+              </Link>
+              </div>
             </div>
           </Form>
         </div>
