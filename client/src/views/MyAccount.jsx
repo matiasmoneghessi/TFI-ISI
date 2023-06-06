@@ -210,6 +210,7 @@ const MyAccount = () => {
                         {isEditing ? (
                           <div className="form-group">
                             <Field
+                              placeholder="Formato fecha: xx/xx/xxxx"
                               name="birthdate"
                               className={
                                 formik.touched.name && formik.errors.name
@@ -223,6 +224,7 @@ const MyAccount = () => {
                                 {formik.errors.name}
                               </div>
                             ) : null}
+                            <p></p>
                           </div>
                         ) : (
                           userData.birthdate
