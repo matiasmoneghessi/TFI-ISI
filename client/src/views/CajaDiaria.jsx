@@ -262,7 +262,7 @@ const TurnosOpFullView = () => {
   return (
     <>
       <CustomNavbar />
-      <div className={style.mainContainer}>
+      <div className={style.mainContainerCajaDiaria}>
         
         <div className={style.contentContainer}>
           <div className={style.tableContainer}>

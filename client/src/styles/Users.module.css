@@ -4,6 +4,13 @@
   background-image: url("../../public/30.jpg");
 }
 
+.mainContainerCajaDiaria {
+  height: calc(100vh - 62px);
+  display: flex;
+  justify-content: center;
+  background-image: url("../../public/30.jpg");
+}
+
 .sideContainer {
   width: 350px;
   color: #000000;
