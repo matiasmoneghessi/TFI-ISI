@@ -3,12 +3,8 @@ import { useState, useEffect } from "react";
 import Badge from "react-bootstrap/Badge";
 import axios from "axios";
 import CustomNavbar from "../commons/CustomNavbar";
-import UserDetails from "../commons/UserDetails";
 import BootstrapTable from "react-bootstrap-table-next";
-import filterFactory, {
-  textFilter,
-  selectFilter,
-} from "react-bootstrap-table2-filter";
+import filterFactory, { textFilter, selectFilter} from "react-bootstrap-table2-filter";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import parseJwt from "../hooks/parseJwt";
 import capitalize from "../hooks/capitalize";
@@ -87,17 +83,7 @@ const TurnosOpFullView = () => {
                   >
                     <i className="bbi bi-check2-square"></i>
                   </Badge>
-                  &nbsp;&nbsp;
-                  <Badge
-                    bg="secondary"
-                    role="button"
-                    data-bs-toggle="tooltip"
-                    title="Reprogramar"
-                    onClick={() => handleEdit(appointment._id)}
-                  >
-                    <i className="bi bi-pencil-square"></i>
-                  </Badge>
-                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;                 
                   <Badge
                     bg="secondary"
                     role="button"
@@ -121,11 +107,6 @@ const TurnosOpFullView = () => {
   const handleAppSelection = (id) => {
     const appointment = apps.filter((appointment) => appointment._id === id)[0];
     setSelectedApp(appointment);
-  };
-
-  const handleEdit = (appointmentId) => {
-    dispatch(selectAppToEdit(appointmentId));
-    navigate("/calendar");
   };
 
   const handleDelete = (appointmentId) => {
@@ -222,37 +203,7 @@ const TurnosOpFullView = () => {
       },
       headerAlign: "center",
       align: "center",
-      sort: true,
-      sortCaret: (order, column) => {
-        if (!order)
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-arrow-down-up"></i>
-              </font>
-            </span>
-          );
-        else if (order === "asc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-down"></i>
-              </font>
-            </span>
-          );
-        else if (order === "desc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-up"></i>
-              </font>
-            </span>
-          );
-        return null;
-      },
+      filter: textFilter(),
     },
     {
       dataField: "time",
@@ -313,7 +264,7 @@ const TurnosOpFullView = () => {
           <AppDetailsOp
             appointment={selectedApp}
             handleDelete={handleDelete}
-            handleEdit={handleEdit}
+            handleAssitance={handleAssitance}
           />
         </div>
         <div className={style.contentContainer}>
