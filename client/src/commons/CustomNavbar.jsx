@@ -112,7 +112,7 @@ const CustomNavbar = () => {
                   <Nav.Link href="/turnos_operator" className={style.linkNavBar}>
                     Calendario
                   </Nav.Link>
-                  <Nav.Link href="/turnos_opFullView" className={style.linkNavBar}>
+                  <Nav.Link href="/turnos_operator_table" className={style.linkNavBar}>
                     Turnos 
                   </Nav.Link>
                   <Nav.Link href="/CajaDiaria" className={style.linkNavBar}>
