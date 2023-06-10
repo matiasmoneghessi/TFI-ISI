@@ -2,12 +2,12 @@
   height: calc(100vh - 62px);
   display: flex;
   background-color: #FFFFFF;
+  background-image: url("../../public/30.jpg");
 }
 
 .contentContainer {
   border: 10px solid #EFECEC;
-  border-radius: 5px;
-  background-image: url("../../public/fondo.jpg");
+  border-radius: 5px;  
   width: 100%;
   margin: 40px 60px;
   display: flex;
@@ -17,7 +17,9 @@
 
 .tableContainer {
   width: calc(100%-60px);
-  margin: 40px;
+  margin-top: 40px;
+  margin-left: 8%;
+  margin-right: 8%;
 }
 
 .btnEditsButton {
