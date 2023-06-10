@@ -34,6 +34,15 @@
   text-align: center;
 }
 
+table caption {
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-bottom: 10px;
+  text-align: center;
+  justify-content: center;
+  caption-side: top;
+}
+
 .calendarStyle {
   border-radius: 10px !important;
   border:  4px solid #ffffff!important;
