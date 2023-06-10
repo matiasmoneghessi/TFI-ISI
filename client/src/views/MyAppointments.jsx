@@ -93,7 +93,7 @@ const MyAppointments = () => {
                 officePhone: office.phone ? office.phone : "-",
                 officeEmail: office.email ? office.email : "-",
                 officePrice: office._id
-                  ? "ARS " + office.price.$numberDecimal
+                  ? "$" + office.price
                   : "-",
                 actions:
                   appointment.state === undefined ||

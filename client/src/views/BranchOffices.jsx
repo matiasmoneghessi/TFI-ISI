@@ -5,18 +5,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CustomNavbar from "../commons/CustomNavbar";
 import BootstrapTable from "react-bootstrap-table-next";
-import filterFactory, {
-  textFilter,
-  selectFilter,
-} from "react-bootstrap-table2-filter";
+import filterFactory, {textFilter,} from "react-bootstrap-table2-filter";
 import paginationFactory from "react-bootstrap-table2-paginator";
-import Button from "react-bootstrap/esm/Button";
 import parseJwt from "../hooks/parseJwt";
 import capitalize from "../hooks/capitalize";
 import { Confirm } from "notiflix/build/notiflix-confirm-aio";
-
 import style from "../styles/BranchOffices.module.css";
-import { Navigate } from "react-router-dom";
 
 const BranchOffices = ({ selectOffice }) => {
   const [offices, setOffices] = useState([]);
@@ -40,14 +34,9 @@ const BranchOffices = ({ selectOffice }) => {
             _id: office._id,
             operator: office.operator,
             id: office._id.slice(-4),
-            name: capitalize(office.location + " - " + office.address),
-            isOpen:
-              office.startTime.toString() +
-              " a " +
-              office.endTime.toString() +
-              " hs",
+            name: capitalize(office.location + " - " + office.address),            
             simultAppointment: office.simultAppointment,
-            price: office.price.$numberDecimal,
+            price: "$" + office.price,
             actions: (
               <>
                 <Badge
@@ -102,6 +91,15 @@ const BranchOffices = ({ selectOffice }) => {
     );
   };
 
+  function headerFormatter(column, colIndex, { sortElement, filterElement }) {
+    return (
+      <div style={ { display: 'flex', flexDirection: 'column' } }>
+        { filterElement }        
+        { sortElement }
+      </div>
+    );
+  }
+
   const columns = [
     {
       dataField: "id",
@@ -147,60 +145,25 @@ const BranchOffices = ({ selectOffice }) => {
       dataField: "name",
       text: "Sucursal",
       headerAlign: "center",
-      sort: true,
-      sortCaret: (order, column) => {
-        if (!order)
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-arrow-down-up"></i>
-              </font>
-            </span>
-          );
-        else if (order === "asc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-alpha-down"></i>
-              </font>
-            </span>
-          );
-        else if (order === "desc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-alpha-up"></i>
-              </font>
-            </span>
-          );
-        return null;
-      },
-      filter: textFilter(),
-    },
-    {
-      dataField: "isOpen",
-      text: "Horario de atención",
-      headerStyle: (column, colIndex) => {
-        return { width: "14em" };
-      },
-      headerAlign: "center",
       align: "center",
+      headerFormatter: headerFormatter,
+      filter: textFilter({placeholder: 'Ingrese nombre de sucursal para filtrar'}),
+      headerStyle: (column, colIndex) => {
+        return { width: "15em" };
+      },
     },
     {
       dataField: "simultAppointment",
       text: "Turnos en simultáneo",
       headerStyle: (column, colIndex) => {
-        return { width: "12em" };
+        return { width: "5em" };
       },
       headerAlign: "center",
       align: "center",
     },
     {
       dataField: "price",
-      text: "Precio del turno (ARS)",
+      text: "Precio del turno",
       headerStyle: (column, colIndex) => {
         return { width: "12em" };
       },
@@ -236,7 +199,6 @@ const BranchOffices = ({ selectOffice }) => {
               columns={columns}
               defaultSorted={defaultSorted}
               filter={filterFactory()}
-              filterPosition="top"
               pagination={paginationFactory()}
               striped
               hover

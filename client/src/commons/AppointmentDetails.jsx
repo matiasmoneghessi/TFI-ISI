@@ -86,7 +86,7 @@ const AppointmentDetails = () => {
         <li>Email: {pickedBranchOffice.email}</li>
         <li>Fecha: {getFullDate(pickedDate)}</li>
         <li>Hora: {getFixedTime(pickedDate)} hs</li>
-        <li>Precio: ${pickedBranchOffice.price.$numberDecimal}</li>
+        <li>Precio: ${pickedBranchOffice.price}</li>
       </ul>
       
       {!hasClickedDetailsButton

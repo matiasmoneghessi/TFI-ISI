@@ -59,7 +59,7 @@ const branchOfficeSchema = new Schema({
     ref: "Appointment",
   }],
   price: {
-    type: Schema.Types.Decimal128,
+    type: Schema.Types.Number,
     default: 0,
     get: getPrice,
   },

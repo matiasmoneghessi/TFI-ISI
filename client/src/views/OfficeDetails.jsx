@@ -129,7 +129,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
             startTime: office.startTime,
             endTime: office.endTime,
             simultAppointment: office.simultAppointment,
-            price: office.price.$numberDecimal,
+            price: office.price,
           }}
           validationSchema={validate}
           onSubmit={(values) => {
@@ -377,7 +377,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
                           )}
                         </li>
                         <li>
-                          Precio del turno:&emsp;ARS{" "}
+                          Precio del turno:&emsp;${""}
                           {isEditingAppointments ? (
                             <div className="form-group">
                               <Field
@@ -396,7 +396,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
                               ) : null}
                             </div>
                           ) : (
-                            office.price.$numberDecimal
+                            office.price
                           )}
                         </li>
                       </ul>
