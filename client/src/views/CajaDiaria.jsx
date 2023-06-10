@@ -7,14 +7,12 @@ import filterFactory, {textFilter} from "react-bootstrap-table2-filter";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import parseJwt from "../hooks/parseJwt";
 import capitalize from "../hooks/capitalize";
-import { Confirm } from "notiflix/build/notiflix-confirm-aio";
 import { useDispatch, useSelector } from "react-redux";
-import { selectAppToEdit, emptyAppToEdit } from "../features/editAppointment";
-import { Report } from "notiflix";
+import {  emptyAppToEdit } from "../features/editAppointment";
 import style from "../styles/Users.module.css";
 import { useNavigate } from "react-router-dom";
 
-const TurnosOpFullView = () => {
+const CajaDiaria = () => {
   const [appsRaw, setAppsRaw] = useState([]);
   const [apps, setApps] = useState([]);
   const [load, setLoad] = useState(true);
@@ -59,19 +57,18 @@ const TurnosOpFullView = () => {
           const year = parseInt(appointment.year);
           const month = parseInt(appointment.month) + 1;
           const day = parseInt(appointment.date);
-          const date = new Date(year, month, day);
-
+          const date = new Date(year, month, day);          
           return {
             _id: appointment._id,
             id: appointment._id.slice(-4),
             date:
               date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear(),
             time: appointment.time + " hs",
-            paciente: capitalize(appointment.user[0].fname + " " + appointment.user[0].lname),             
+            paciente: capitalize(appointment.user[0].fname + " " + appointment.user[0].lname),
             pacienteTel: appointment.user[0].phone,
-            pacienteEmail: appointment.user[0].email,            
-            status: appointment.state === "asistido" ? (    capitalize(appointment.state)       ) : ( <></> ), 
-            importe: appointment.state === "asistido" ? ("$" + appointment.branchOffice[0].price.$numberDecimal) : ( <></> ),
+            pacienteEmail: appointment.user[0].email,
+            status: appointment.state === "asistido" ? (    capitalize(appointment.state)       ) : ( <></> ),
+            importe: appointment.state === "asistido" ? ( appointment.branchOffice[0].price) : ( <></> ),
           };
         
         });
@@ -80,56 +77,15 @@ const TurnosOpFullView = () => {
       .catch((err) => console.log(err));
   };
 
-  const handleAppSelection = (id) => {
-    const appointment = apps.filter((appointment) => appointment._id === id)[0];
-    setSelectedApp(appointment);
-  };
-
-  const handleEdit = (appointmentId) => {
-    dispatch(selectAppToEdit(appointmentId));
-    navigate("/calendar");
-  };
-
-  const handleDelete = (appointmentId) => {
-    Confirm.show(
-      "TuTurno",
-      "¿Confirma que desea cancelar este turno?",
-      "Si",
-      "No",
-      () => {
-        axios
-          .put(
-            `http://localhost:3001/api/appointment/${payload.id}/myAppointment/remove`,
-            { id: appointmentId }
-          )
-          .then((res) => {
-            setLoad(!load);
-          })
-          .catch((err) => console.log(err));
-      }
-    );
-  };
-
-  const handleAssitance = (appointmentId) => {    
-    axios
-      .put(
-        `http://localhost:3001/api/appointment/${appointmentId}/myAppointment/asisted`,
-        { id: appointmentId }
-      )
-      .then((res) => {
-        console.log(res, "res");
-        Report.success(
-          "TuTurno",
-          "Se confirmó la asistencia del usuario",
-          "Ok"
-        );
-      })
-      .catch((err) => Report.failure("TuTurno", { err }, "Ok"));
-  };
-
   // Table setups
-
-  
+  function headerFormatter(column, colIndex, { sortElement, filterElement }) {
+    return (
+      <div style={ { display: 'flex', flexDirection: 'column' } }>
+        { filterElement }        
+        { sortElement }
+      </div>
+    );
+  }
   const columns = [
     {
       dataField: "id",
@@ -140,6 +96,7 @@ const TurnosOpFullView = () => {
       headerAlign: "center",
       align: "center",
       sort: true,
+      footer: '',
       sortCaret: (order, column) => {
         if (!order)
           return (
@@ -174,46 +131,19 @@ const TurnosOpFullView = () => {
     {
       dataField: "date",
       text: "Fecha",
+      headerFormatter: headerFormatter,
+      footer: '',
       headerStyle: (column, colIndex) => {
-        return { width: "10em" };
+        return { width: "13em" };
       },
       headerAlign: "center",
       align: "center",
-      sort: true,
-      sortCaret: (order, column) => {
-        if (!order)
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-arrow-down-up"></i>
-              </font>
-            </span>
-          );
-        else if (order === "asc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-down"></i>
-              </font>
-            </span>
-          );
-        else if (order === "desc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-up"></i>
-              </font>
-            </span>
-          );
-        return null;
-      },
+      filter: textFilter({placeholder: 'Ingrese fecha para filtrar'}),
     },
     {
       dataField: "time",
       text: "Hora",
+      footer: '',
       headerStyle: (column, colIndex) => {
         return { width: "10em" };
       },
@@ -222,10 +152,13 @@ const TurnosOpFullView = () => {
     },
     {
       dataField: "paciente",
+      filter: textFilter({placeholder: 'Ingrese nombre de paciente para filtrar'}),
       text: "Paciente",
+      headerFormatter: headerFormatter,
       headerAlign: "center",
       align: "center",
-      filter: textFilter(),
+      footer: '',
+      
       headerStyle: (column, colIndex) => {
         return { width: "20em" };
       },
@@ -233,18 +166,21 @@ const TurnosOpFullView = () => {
     {
       dataField: "status",
       text: "Estado",
+      footer: 'Importe Total: $',
       headerStyle: (column, colIndex) => {
         return { width: "10em" };
       },
     },
     {
-      dataField: "importe",
-      text: "Importe",
+      dataField: "importe",      
+      text: "Importe $",
       headerStyle: (column, colIndex) => {
         return { width: "10em" };
       },
       headerAlign: "center",
       align: "center",
+      footerAlign: (column, colIndex) => 'center',
+      footer:  columnData => columnData.reduce((acc, item) => acc + item, 0)
     },
   ];
   const defaultSorted = [
@@ -253,11 +189,7 @@ const TurnosOpFullView = () => {
       order: "asc",
     },
   ];
-  const rowEvents = {
-    onClick: (e, row, rowIndex) => {
-      handleAppSelection(row._id);
-    },
-  };
+  const CaptionElement = () => <h3 style={{ borderRadius: '0.25em', textAlign: 'center', color: '#20A4F3', border: '2px solid #007BFF', padding: '0.5em' }}>CAJA DIARIA</h3>;
 
   return (
     <>
@@ -265,16 +197,16 @@ const TurnosOpFullView = () => {
       <div className={style.mainContainerCajaDiaria}>
         
         <div className={style.contentContainer}>
-          <div className={style.tableContainer}>
+          <div className={style.tableContainer}>          
             <BootstrapTable
               keyField="id"
               data={apps}
+              caption={<CaptionElement />}
               columns={columns}
               defaultSorted={defaultSorted}
               filter={filterFactory()}
-              filterPosition="top"
+             
               pagination={paginationFactory()}
-              rowEvents={rowEvents}
               striped
               hover
               condensed
@@ -286,4 +218,4 @@ const TurnosOpFullView = () => {
   );
 };
 
-export default TurnosOpFullView;
+export default CajaDiaria;
