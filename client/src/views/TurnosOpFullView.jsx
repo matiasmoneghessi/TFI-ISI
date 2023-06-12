@@ -146,6 +146,15 @@ const TurnosOpFullView = () => {
       .catch((err) => Report.failure("TuTurno", { err }, "Ok"));
   };
 
+  function headerFormatter(column, colIndex, { sortElement, filterElement }) {
+    return (
+      <div style={ { display: 'flex', flexDirection: 'column' } }>
+        { filterElement }        
+        { sortElement }
+      </div>
+    );
+  }
+
   // Table setups
 
   const selectOptions = {
@@ -157,53 +166,23 @@ const TurnosOpFullView = () => {
   const columns = [
     {
       dataField: "id",
-      text: "ID Turno",
+      text: "ID Turno",      
       headerStyle: (column, colIndex) => {
         return { width: "8em" };
       },
       headerAlign: "center",
       align: "center",
-      sort: true,
-      sortCaret: (order, column) => {
-        if (!order)
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-arrow-down-up"></i>
-              </font>
-            </span>
-          );
-        else if (order === "asc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-down"></i>
-              </font>
-            </span>
-          );
-        else if (order === "desc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-up"></i>
-              </font>
-            </span>
-          );
-        return null;
-      },
     },
     {
       dataField: "date",
       text: "Fecha",
       headerStyle: (column, colIndex) => {
-        return { width: "10em" };
+        return { width: "14em" };
       },
       headerAlign: "center",
       align: "center",
-      filter: textFilter(),
+      headerFormatter: headerFormatter,
+      filter: textFilter({placeholder: 'Ingrese fecha del turno'}),
     },
     {
       dataField: "time",
@@ -219,19 +198,22 @@ const TurnosOpFullView = () => {
       text: "Paciente",
       headerAlign: "center",
       align: "center",
-      filter: textFilter(),
+      headerFormatter: headerFormatter,
+      filter: textFilter({placeholder: 'Ingrese nombre del paciente'})
     },
     {
       dataField: "status",
       text: "Estado",
       headerStyle: (column, colIndex) => {
-        return { width: "10em" };
+        return { width: "14em" };
       },
       headerAlign: "center",
       align: "center",
+      headerFormatter: headerFormatter,
       formatter: (cell) => selectOptions[cell],
       filter: selectFilter({
         options: selectOptions,
+        placeholder: 'Ingrese estado del turno'
       }),
     },
     {
@@ -275,8 +257,7 @@ const TurnosOpFullView = () => {
               caption={<CaptionElement />}
               columns={columns}
               defaultSorted={defaultSorted}
-              filter={filterFactory()}
-              filterPosition="top"
+              filter={filterFactory()}              
               pagination={paginationFactory()}
               rowEvents={rowEvents}
               striped

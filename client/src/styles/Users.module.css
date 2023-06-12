@@ -22,16 +22,18 @@
   display: flex;
   justify-content: center;
 }
+.calendarContainer {
+  text-align: center;
+}
 
 #dropBranches {
   margin: 15px auto;
-  width: 50%;
+  text-align: center;
 }
 
 .tableContainer {
   width: 90%;
   margin-top: 40px;
-  text-align: center;
 }
 
 table caption {

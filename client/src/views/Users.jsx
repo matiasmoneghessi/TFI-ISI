@@ -13,7 +13,6 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 import parseJwt from "../hooks/parseJwt";
 import capitalize from "../hooks/capitalize";
 import { Confirm } from "notiflix/build/notiflix-confirm-aio";
-
 import style from "../styles/Users.module.css";
 
 const Users = () => {
@@ -134,6 +133,14 @@ const Users = () => {
   };
 
   // Table setups
+  function headerFormatter(column, colIndex, { sortElement, filterElement }) {
+    return (
+      <div style={ { display: 'flex', flexDirection: 'column' } }>
+        { filterElement }        
+        { sortElement }
+      </div>
+    );
+  }
 
   const selectOptions = {
     CL: "CL",
@@ -149,102 +156,48 @@ const Users = () => {
       },
       headerAlign: "center",
       align: "center",
-      sort: true,
-      sortCaret: (order, column) => {
-        if (!order)
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-arrow-down-up"></i>
-              </font>
-            </span>
-          );
-        else if (order === "asc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-down"></i>
-              </font>
-            </span>
-          );
-        else if (order === "desc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-up"></i>
-              </font>
-            </span>
-          );
-        return null;
-      },
     },
     {
       dataField: "lname",
       text: "Apellido",
       headerAlign: "center",
-      sort: true,
-      sortCaret: (order, column) => {
-        if (!order)
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-arrow-down-up"></i>
-              </font>
-            </span>
-          );
-        else if (order === "asc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-alpha-down"></i>
-              </font>
-            </span>
-          );
-        else if (order === "desc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-alpha-up"></i>
-              </font>
-            </span>
-          );
-        return null;
-      },
-      filter: textFilter(),
+      headerFormatter: headerFormatter,
+      align: "center",      
+      filter: textFilter({placeholder: 'Ingrese apellido del usuario'}),
     },
     {
       dataField: "fname",
       text: "Nombre",
       headerAlign: "center",
-      filter: textFilter(),
+      align: "center",
+      headerFormatter: headerFormatter,
+      filter: textFilter({placeholder: 'Ingrese nombre del usuario'}),
     },
     {
       dataField: "dni",
       text: "DNI",
       headerStyle: (column, colIndex) => {
-        return { width: "8em" };
+        return { width: "13em" };
       },
       headerAlign: "center",
       align: "center",
-      filter: textFilter(),
+      headerFormatter: headerFormatter,
+      filter: textFilter({placeholder: 'Ingrese DNI del usuario'}),
+
     },
     {
       dataField: "role",
       text: "Rol",
       headerStyle: (column, colIndex) => {
-        return { width: "8em" };
+        return { width: "14em" };
       },
       headerAlign: "center",
       align: "center",
       formatter: (cell) => selectOptions[cell],
+      headerFormatter: headerFormatter,
       filter: selectFilter({
         options: selectOptions,
+        placeholder: 'Ingrese rol del usuario'
       }),
     },
     {
@@ -288,8 +241,7 @@ const Users = () => {
               data={users}
               columns={columns}
               defaultSorted={defaultSorted}
-              filter={filterFactory()}
-              filterPosition="top"
+              filter={filterFactory()}              
               pagination={paginationFactory()}
               rowEvents={rowEvents}
               striped

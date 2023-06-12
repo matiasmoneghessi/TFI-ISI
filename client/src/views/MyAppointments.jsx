@@ -162,7 +162,14 @@ const MyAppointments = () => {
   };
 
   // Table setups
-
+  function headerFormatter(column, colIndex, { sortElement, filterElement }) {
+    return (
+      <div style={ { display: 'flex', flexDirection: 'column' } }>
+        { filterElement }        
+        { sortElement }
+      </div>
+    );
+  }
   const selectOptions = {
     Reservado: "Reservado",
     Cancelado: "Cancelado",
@@ -178,105 +185,51 @@ const MyAppointments = () => {
       },
       headerAlign: "center",
       align: "center",
-      sort: true,
-      sortCaret: (order, column) => {
-        if (!order)
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-arrow-down-up"></i>
-              </font>
-            </span>
-          );
-        else if (order === "asc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-down"></i>
-              </font>
-            </span>
-          );
-        else if (order === "desc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-up"></i>
-              </font>
-            </span>
-          );
-        return null;
-      },
     },
     {
       dataField: "date",
       text: "Fecha",
       headerStyle: (column, colIndex) => {
-        return { width: "10em" };
+        return { width: "13em" };
       },
       headerAlign: "center",
       align: "center",
-      sort: true,
-      sortCaret: (order, column) => {
-        if (!order)
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-arrow-down-up"></i>
-              </font>
-            </span>
-          );
-        else if (order === "asc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-down"></i>
-              </font>
-            </span>
-          );
-        else if (order === "desc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-up"></i>
-              </font>
-            </span>
-          );
-        return null;
-      },
+      headerFormatter: headerFormatter,
+      filter: textFilter({placeholder: 'Ingrese fecha del turno'})
     },
     {
       dataField: "time",
       text: "Hora",
       headerStyle: (column, colIndex) => {
-        return { width: "10em" };
+        return { width: "5em" };
       },
       headerAlign: "center",
       align: "center",
     },
     {
       dataField: "office",
-      text: "Sucursal",
+      text: "Clinica",
       headerAlign: "center",
       align: "center",
-      filter: textFilter(),
+      headerStyle: (column, colIndex) => {
+        return { width: "14em" };
+      },
+      headerFormatter: headerFormatter,
+      filter: textFilter({placeholder: 'Ingrese clinica del turno'})
     },
     {
       dataField: "status",
       text: "Estado",
       headerStyle: (column, colIndex) => {
-        return { width: "10em" };
+        return { width: "14em" };
       },
       headerAlign: "center",
       align: "center",
       formatter: (cell) => selectOptions[cell],
+      headerFormatter: headerFormatter,
       filter: selectFilter({
         options: selectOptions,
+        placeholder: 'Ingrese estado del turno'
       }),
     },
     {
@@ -320,7 +273,6 @@ const MyAppointments = () => {
               columns={columns}
               defaultSorted={defaultSorted}
               filter={filterFactory()}
-              filterPosition="top"
               pagination={paginationFactory()}
               rowEvents={rowEvents}
               striped

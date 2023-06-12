@@ -95,38 +95,7 @@ const CajaDiaria = () => {
       },
       headerAlign: "center",
       align: "center",
-      sort: true,
       footer: '',
-      sortCaret: (order, column) => {
-        if (!order)
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-arrow-down-up"></i>
-              </font>
-            </span>
-          );
-        else if (order === "asc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-down"></i>
-              </font>
-            </span>
-          );
-        else if (order === "desc")
-          return (
-            <span>
-              &nbsp;&nbsp;
-              <font color="grey">
-                <i className="bi bi-sort-numeric-up"></i>
-              </font>
-            </span>
-          );
-        return null;
-      },
     },
     {
       dataField: "date",
@@ -156,7 +125,7 @@ const CajaDiaria = () => {
       text: "Paciente",
       headerFormatter: headerFormatter,
       headerAlign: "center",
-      align: "center",
+      align: "center",      
       footer: '',
       
       headerStyle: (column, colIndex) => {
@@ -166,6 +135,8 @@ const CajaDiaria = () => {
     {
       dataField: "status",
       text: "Estado",
+      headerAlign: "center",
+      align: "center",
       footer: 'Importe Total: $',
       headerStyle: (column, colIndex) => {
         return { width: "10em" };
@@ -204,8 +175,7 @@ const CajaDiaria = () => {
               caption={<CaptionElement />}
               columns={columns}
               defaultSorted={defaultSorted}
-              filter={filterFactory()}
-             
+              filter={filterFactory()}             
               pagination={paginationFactory()}
               striped
               hover

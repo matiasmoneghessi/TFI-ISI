@@ -101,7 +101,7 @@ const CustomNavbar = () => {
               {role === "AD" ? (
                 <>
                   <Nav.Link href="/offices" className={style.linkNavBar}>
-                    Sucursales
+                    Clinicas
                   </Nav.Link>
                   <Nav.Link href="/users" className={style.linkNavBar}>
                     Usuarios

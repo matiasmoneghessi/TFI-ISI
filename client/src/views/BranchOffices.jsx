@@ -75,7 +75,7 @@ const BranchOffices = ({ selectOffice }) => {
   const handleDelete = (id) => {
     Confirm.show(
       "TuTurno",
-      "¿Confirma que desea eliminar la sucursal?",
+      "¿Confirma que desea eliminar la clinica?",
       "Si",
       "No",
       () => {
@@ -143,11 +143,11 @@ const BranchOffices = ({ selectOffice }) => {
     },
     {
       dataField: "name",
-      text: "Sucursal",
+      text: "Clinica",
       headerAlign: "center",
       align: "center",
       headerFormatter: headerFormatter,
-      filter: textFilter({placeholder: 'Ingrese nombre de sucursal para filtrar'}),
+      filter: textFilter({placeholder: 'Ingrese nombre de clinica para filtrar'}),
       headerStyle: (column, colIndex) => {
         return { width: "15em" };
       },
@@ -211,7 +211,7 @@ const BranchOffices = ({ selectOffice }) => {
               variant="secondary"
               className={style.btnEditsButton}
             >
-              + Agregar sucursal
+              + Agregar clinica
             </a>
           </div>
         </div>
