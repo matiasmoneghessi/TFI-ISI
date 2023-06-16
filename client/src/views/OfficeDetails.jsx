@@ -46,7 +46,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
   const handleSubmit = (values) => {
     Confirm.show(
       "TuTurno",
-      "¿Confirma que desea aplicar los cambios en esta sucursal?",
+      "¿Confirma que desea aplicar los cambios en esta clinica?",
       "Si",
       "No",
       () => {
@@ -102,7 +102,6 @@ const OfficeDetails = ({ office, selectOffice }) => {
         `http://localhost:3001/api/branchOffice/admin/${payload.id}/showBranch/${office._id}/operator`
       )
       .then((res) => {
-        console.log(res.data.data);
         return res.data.data;
       })
       .then((operators) => setOperatorsList(operators))
@@ -111,7 +110,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
 
   const validate = Yup.object({
     address: Yup.string().required("Ingresar una dirección."),
-    location: Yup.string().required("Ingresar una dirección."),
+    location: Yup.string().required("Ingresar una dirección."),    
   });
 
   return (
@@ -124,6 +123,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
           initialValues={{
             address: capitalize(office.address),
             location: capitalize(office.location),
+            nombre: office.nombre,
             phone: office.phone,
             email: office.email,
             startTime: office.startTime,
@@ -141,7 +141,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
               <Form>
                 <div className={style.nameContainer}>
                   <h4>
-                    Sucursal{" "}
+                    Clinica{" "}
                     {capitalize(office.location + " - " + office.address)}
                   </h4>
                 </div>
@@ -149,7 +149,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
                   <div className={style.leftDataContainer}>
                     <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
-                        <h5>Datos de Sucursal</h5>
+                        <h5>Datos de Clinica</h5>
                         <button
                           type="button"
                           variant="secondary"
@@ -166,8 +166,27 @@ const OfficeDetails = ({ office, selectOffice }) => {
                       <ul>
                         <li>ID Sucursal:&emsp;{office._id}</li>
                         <li>
-                          Nombre:&emsp;
-                          {capitalize(office.location + " - " + office.address)}
+                          Nombre:&emsp;                          
+                          {isEditingBranch ? (
+                            <div className="form-group">
+                              <Field
+                                name="nombre"
+                                className={
+                                  formik.touched.name && formik.errors.name
+                                    ? "form-control is-invalid"
+                                    : "form-control"
+                                }
+                                type="text"
+                              />
+                              {formik.touched.name && formik.errors.name ? (
+                                <div className="invalid-feedback">
+                                  {formik.errors.name}
+                                </div>
+                              ) : null}
+                            </div>
+                          ) : (
+                            capitalize(office.nombre)
+                          )}                        
                         </li>
                         <li>
                           Dirección:&emsp;
@@ -214,7 +233,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
                           ) : (
                             capitalize(office.location)
                           )}
-                        </li>
+                        </li>                        
                       </ul>
                     </div>
                     
@@ -406,7 +425,7 @@ const OfficeDetails = ({ office, selectOffice }) => {
 
                     <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
-                        <h5>Operadores asignados a la sucursal</h5>
+                        <h5>Operadores asignados a la clinica</h5>
                         <button
                           type="button"
                           variant="secondary"
