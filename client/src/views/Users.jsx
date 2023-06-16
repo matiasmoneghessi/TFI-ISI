@@ -114,7 +114,7 @@ const Users = () => {
       () => {
         axios
           .delete(
-            `http://localhost:3001/api/users/admin/${payload.id}/delete/${id}`
+            `http://localhost:3001/api/users/delete/${id}`
           )
           .then((res) => {
             console.log(res);
