@@ -28,7 +28,7 @@ const NewOffice = () => {
         values
       )
       .then((res) => {
-        Report.success("Se ha creado una nueva sucursal", "Ok");
+        Report.success("Se ha creado una nueva clinica", "Ok");
         navigate("/offices");
       })
       .catch((err) => console.log(err));
@@ -47,6 +47,7 @@ const NewOffice = () => {
           initialValues={{
             address: "",
             location: "",
+            nombre: "",
             phone: "",
             email: "",
             startTime: "",
@@ -63,17 +64,34 @@ const NewOffice = () => {
             <div className={style.contentContainer}>
               <Form>
                 <div className={style.nameContainer}>
-                  <h4>Nueva Sucursal</h4>
+                  <h4>Nueva Clinica</h4>
                 </div>
                 <div className={style.dataContainer}>
                   <div className={style.leftDataContainer}>
                     <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
-                        <h5>Datos de Sucursal</h5>
+                        <h5>Datos de Clinica</h5>
                       </div>
                       <ul>
-                        <li>ID Sucursal:&emsp;sin asignar</li>
-                        <li>Nombre:&emsp; sin asignar</li>
+                        <li>ID Clinica:&emsp;sin asignar</li>
+                        <li>Nombre de la clinica:&emsp;
+                          <div className="form-group">
+                              <Field
+                                name="nombre"
+                                className={
+                                  formik.touched.name && formik.errors.name
+                                    ? "form-control is-invalid"
+                                    : "form-control"
+                                }
+                                type="text"
+                              />
+                              {formik.touched.name && formik.errors.name ? (
+                                <div className="invalid-feedback">
+                                  {formik.errors.name}
+                                </div>
+                              ) : null}
+                            </div>
+                        </li>
                         <li>
                           Dirección:&emsp;
                           <div className="form-group">
@@ -246,7 +264,7 @@ const NewOffice = () => {
                     </div>
                     <div className={style.generalContainer}>
                       <div className={style.generalContainerTitle}>
-                        <h5>Operadores asignados a la sucursal</h5>
+                        <h5>Operadores asignados a la clinica</h5>
                       </div>
                       <ul>
                         <li>
@@ -286,7 +304,7 @@ const NewOffice = () => {
                       variant="secondary"
                       className={style.btnEditsButton}
                     >
-                      Crear sucursal
+                      Crear clinica
                     </button>
                   </div>
                 </div>
