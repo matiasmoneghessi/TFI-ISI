@@ -9,10 +9,14 @@ const UserDetails = ({ user, handleDelete, handleRoleChange }) => {
     <div className={style.userDetails}>
       <h5>Detalle de usuario</h5>
       <ul>
-        <li>ID: {user._id}</li>
-        {/* <li>Rol: {user.admin ? "AD" : user.operator ? "OP" : "CL"}</li> */}
+        <li>ID: {user._id}</li>        
         <li>Apellido: {capitalize(user.lname)}</li>
         <li>Nombre: {capitalize(user.fname)}</li>
+        {user.operator && user.especialidad ? (
+          <li>Especialidad: {user.especialidad}</li>
+        ) : (
+          null
+        )}
         <li>DNI: {user.dni}</li>
         <li>E-mail: {user.email}</li>
         <li>Fecha de nacimiento: {user.birthdate}</li>
