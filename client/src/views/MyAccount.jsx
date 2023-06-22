@@ -83,6 +83,7 @@ const MyAccount = () => {
           initialValues={{
             lname: capitalize(userData.lname),
             fname: capitalize(userData.fname),
+            especialidad: userData.especialidad,
             dni: userData.dni,
             email: userData.email,
             birthdate: userData.birthdate,
@@ -159,6 +160,33 @@ const MyAccount = () => {
                           capitalize(userData.fname)
                         )}
                       </li>
+                      {userData.operator ? (
+                        <li>
+                        Especialidad:&emsp;
+                        {isEditing ? (
+                          <div className="form-group">
+                            <Field
+                              name="especialidad"
+                              className={
+                                formik.touched.name && formik.errors.name
+                                  ? "form-control is-invalid"
+                                  : "form-control"
+                              }
+                              type="text"
+                            />
+                            {formik.touched.name && formik.errors.name ? (
+                              <div className="invalid-feedback">
+                                {formik.errors.name}
+                              </div>
+                            ) : null}
+                          </div>
+                        ) : (
+                          userData.especialidad
+                        )}
+                      </li>
+                      ) : (
+                        null
+                      )}                      
                       <li>
                         DNI:&emsp;
                         {isEditing ? (
@@ -210,7 +238,7 @@ const MyAccount = () => {
                         {isEditing ? (
                           <div className="form-group">
                             <Field
-                              placeholder="Formato fecha: xx/xx/xxxx"
+                              placeholder="dd/mm/aaaa"
                               name="birthdate"
                               className={
                                 formik.touched.name && formik.errors.name
