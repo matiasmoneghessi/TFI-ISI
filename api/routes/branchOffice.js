@@ -20,6 +20,7 @@ router.post("/admin/:adminId/add", async (req, res) => {
 
   const {
     location,
+    nombre,
     address,
     phone,
     email,
@@ -32,6 +33,7 @@ router.post("/admin/:adminId/add", async (req, res) => {
 
   const newBranchOffice = new BranchOffice({
     location,
+    nombre,
     address,
     phone,
     email,
@@ -95,6 +97,7 @@ router.put("/admin/:adminId/:id", async (req, res) => {
 
   const {
     location,
+    nombre,
     address,
     phone,
     email,
@@ -111,6 +114,7 @@ router.put("/admin/:adminId/:id", async (req, res) => {
         { _id: parseId(id) },
         {
           location,
+          nombre,
           address,
           phone,
           email,

@@ -17,12 +17,12 @@ const parseId = require("../utils/functions");
 // (1) Usuario - Modifica sus datos personales.
 router.put("/me/:id", (req, res) => {
   const { id } = req.params;
-  const { fname, lname, dni, email, operator, address, phone, birthdate } =
+  const { fname, lname, especialidad, dni, email, operator, address, phone, birthdate } =
     req.body;
 
   User.updateOne(
     { _id: parseId(id) },
-    { fname, lname, dni, email, operator, address, phone, birthdate },
+    { fname, lname, especialidad, dni, email, operator, address, phone, birthdate },
     (err, docs) => {
       res.send({
         items: docs,
