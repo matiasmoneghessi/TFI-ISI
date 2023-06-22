@@ -13,6 +13,11 @@ const branchOfficeSchema = new Schema({
     lowercase: true,
     required: [true, "Location is required"],
   },
+  nombre: {
+    type: String,
+    lowercase: true,
+    required: [true, "Nombre is required"],
+  },
   address: {
     type: String,
     lowercase: true,
