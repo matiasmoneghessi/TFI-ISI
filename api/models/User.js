@@ -45,6 +45,9 @@ const userSchema = new Schema(
       required: false,
       default: false,
     },
+    especialidad: {
+      type: String,
+    },
     phone: {
       type: String,
       required: false,
