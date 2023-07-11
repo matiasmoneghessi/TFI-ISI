@@ -200,6 +200,7 @@ router.get("/:id/showAppointments", async (req, res) => {
       }
     })
       .clone()
+      .populate("branchOffice")
       .exec();
   } catch (err) {
     res.status(404).json(err);
