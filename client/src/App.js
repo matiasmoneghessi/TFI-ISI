@@ -14,6 +14,7 @@ import MyAppointments from "./views/MyAppointments";
 import TurnosOperator from "./views/TurnosOperator"
 import TurnosOpFullView from "./views/TurnosOpFullView"
 import CajaDiaria from "./views/CajaDiaria"
+import Reports from "./views/Reports";
 
 import style from "./styles/App.module.css";
 
@@ -37,9 +38,8 @@ function App() {
         <Route path="/turnos_operator" element={<TurnosOperator />} />
         <Route path="/turnos_operator_table" element={<TurnosOpFullView />} />
         <Route path="/CajaDiaria" element={<CajaDiaria />} />
-        <Route path="/myaccount" element={<MyAccount />} />
-        <Route path="/assist_password" element={<AssistPassword />} />
-        <Route path="/restore_password" element={<RestorePassword />} />
+        <Route path="/myaccount" element={<MyAccount />} />        
+        <Route path="/reports" element={<Reports />} />
         <Route
           path="/offices"
           element={<BranchOffices selectOffice={selectOffice} />}
