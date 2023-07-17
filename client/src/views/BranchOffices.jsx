@@ -186,7 +186,7 @@ const BranchOffices = ({ selectOffice }) => {
       order: "asc",
     },
   ];
-
+  const CaptionElement = () => <h3 style={{ borderRadius: '0.25em', textAlign: 'center', color: '#20A4F3', border: '2px solid #007BFF', padding: '0.5em' }}>CLINICAS</h3>;
   return (
     <>
       <CustomNavbar />
@@ -196,6 +196,7 @@ const BranchOffices = ({ selectOffice }) => {
             <BootstrapTable
               keyField="id"
               data={offices}
+              caption={<CaptionElement />}
               columns={columns}
               defaultSorted={defaultSorted}
               filter={filterFactory()}

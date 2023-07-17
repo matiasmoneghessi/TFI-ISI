@@ -222,7 +222,7 @@ const Users = () => {
       handleUserSelection(row._id);
     },
   };
-
+  const CaptionElement = () => <h3 style={{ borderRadius: '0.25em', textAlign: 'center', color: '#20A4F3', border: '2px solid #007BFF', padding: '0.5em' }}>USUARIOS</h3>;
   return (
     <>
       <CustomNavbar />
@@ -239,6 +239,7 @@ const Users = () => {
             <BootstrapTable
               keyField="id"
               data={users}
+              caption={<CaptionElement />}
               columns={columns}
               defaultSorted={defaultSorted}
               filter={filterFactory()}              
