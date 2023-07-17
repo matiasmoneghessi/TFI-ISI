@@ -1,6 +1,6 @@
 import { Card, Grid, Col, Text, Title, TabGroup, TabList, Tab, TabPanels, TabPanel, DonutChart, AreaChart  } from '@tremor/react'
 import React from 'react'
-import style from "../styles/Users.module.css";
+import CustomNavbar from "../commons/CustomNavbar";
 
 const estado = [
   {
@@ -60,58 +60,58 @@ const Reports = () => {
     return "$ " + Intl.NumberFormat("us").format(number).toString();
   };
   return (
-    <main className='p-6 sm:p-10'>
-      <Title>Panel de Reportes</Title>
-      <Text>Aqui podra ver sus ingresos a modo de grafico.</Text>
-      <TabGroup>
-        <TabList className="mt-8">
-          <Tab>Historial de ingresos</Tab>
-          <Tab>Estado de turnos</Tab>
-        </TabList>
-        
-        <TabPanels>
-          <TabPanel>
-            <div className="mt-8">              
-              <Grid numItemsLg={2} className="gap-6 mt-6">
-                {/* Main section */}
-                <Col numColSpanLg={5}>
+    <main >
+      <CustomNavbar />
+      <div className='p-6 sm:p-10'>
+        <Title>Panel de Reportes</Title>
+        <Text>Aqui podra ver sus ingresos a modo de grafico.</Text>
+        <TabGroup>
+          <TabList className="mt-8">
+            <Tab>Historial de ingresos</Tab>
+            <Tab>Estado de turnos</Tab>
+          </TabList>
+          
+          <TabPanels>
+            <TabPanel>
+              <div className="mt-8">              
+                <Grid numItemsLg={2} className="gap-6 mt-6">
+                  {/* Main section */}
+                  <Col numColSpanLg={5}>
+                  <Card>
+                    <Title>Historial de ingresos (ARS)</Title>
+                    <AreaChart
+                      className="h-72 mt-4"
+                      data={chartdata}
+                      index="date"
+                      categories={["Ventas"]}
+                      colors={["indigo", "cyan"]}
+                      valueFormatter={dataFormatter}
+                    />
+                  </Card>
+                  </Col>
+                  
+                </Grid>
+              </div>
+            </TabPanel>
+            
+            <TabPanel>
+              <div className="mt-8">              
                 <Card>
-                  <Title>Historial de ingresos (ARS)</Title>
-                  <AreaChart
+                  <Title>Estado de turnos</Title>
+                  <DonutChart
                     className="h-72 mt-4"
-                    data={chartdata}
-                    index="date"
-                    categories={["Ventas"]}
-                    colors={["indigo", "cyan"]}
-                    valueFormatter={dataFormatter}
+                    data={estado}
+                    category="sales"
+                    index="name"
+                    valueFormatter={valueFormatter}
+                    colors={["red", "violet", "indigo", "orange", "cyan", "green"]}
                   />
                 </Card>
-                </Col>
-                
-              </Grid>
-            </div>
-          </TabPanel>
-          
-          <TabPanel>
-            <div className="mt-8">              
-              <Card>
-                <Title>Estado de turnos</Title>
-                <DonutChart
-                  className="h-72 mt-4"
-                  data={estado}
-                  category="sales"
-                  index="name"
-                  valueFormatter={valueFormatter}
-                  colors={["red", "violet", "indigo", "orange", "cyan", "green"]}
-                />
-              </Card>
-            </div>
-          </TabPanel>
-        </TabPanels>
-        
-      </TabGroup>
-      
-      
+              </div>
+            </TabPanel>
+          </TabPanels>
+        </TabGroup>
+      </div>
     </main>
   )
 }
