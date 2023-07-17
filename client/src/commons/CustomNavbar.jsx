@@ -133,6 +133,9 @@ const CustomNavbar = () => {
                   <Nav.Link href="/myappointments" className={style.linkNavBar}>
                     Mis Turnos
                   </Nav.Link>
+                  <Nav.Link href="/CajaDiariaUser" className={style.linkNavBar}>
+                    Caja 
+                  </Nav.Link>
                 </>
               )}
               <Nav.Link href="/myaccount" className={style.linkNavBar}>
