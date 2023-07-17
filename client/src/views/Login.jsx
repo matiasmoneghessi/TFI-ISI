@@ -51,18 +51,6 @@ function Login() {
 
   return (
     <div className={style.containerBox}>
-      {/*<div className={style.logoContainer}>
-         <img
-          className={style.largeLogo}
-          src={require("../images/1.png")}
-          alt="TuTurno"
-        />
-        <img
-          className={style.smallLogo}
-          src={require("../images/2.png")}
-          alt="TuTurno"
-        /> 
-      </div>*/}
       <div className={style.midContainer}>
         <div className={style.midContainerSignIn}>
           <div className={style.headerLogIn}>
@@ -113,7 +101,14 @@ function Login() {
 
         </div>
         <div className={style.midContainerSignUp}>
-          <h2 className={style.labelsTitulos}>Sign Up</h2>
+        <div className={style.headerLogIn}>
+          <h2 className={style.labelsTitulos}>Sign Up</h2>        
+        </div>
+        <img
+          className={style.largeLogo}
+          src={require("../images/TuTuH200.png")}
+          alt="TuTurno"
+        />
           <Form onSubmit={handleSubmit}>
             <div className={style.btnSignUp}>
               <p>Aún no tienes cuenta?</p>
