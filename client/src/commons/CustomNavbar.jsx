@@ -76,19 +76,19 @@ const CustomNavbar = () => {
           {!payload.admin && !payload.operator ? 
           <Navbar.Brand href="/calendar">
              <img 
-              src={require("../images/TuTu3.png")}
+              src={require("../images/TuTuH200.png")}
               height="36px"
               className="d-inline-block align-top"
               alt="Logo mi turno"
             />
           </Navbar.Brand> : 
           <Navbar.Brand href="/users">
-          {/* <img 
-            src={require("../images/3.png")}
+           <img 
+            src={require("../images/TuTuH200.png")}
             height="36px"
             className="d-inline-block align-top"
             alt="Logo mi turno"
-          /> */}
+          /> 
         </Navbar.Brand>
           }
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -117,6 +117,9 @@ const CustomNavbar = () => {
                   </Nav.Link>
                   <Nav.Link href="/CajaDiaria" className={style.linkNavBar}>
                     Caja 
+                  </Nav.Link>
+                  <Nav.Link href="/Reports" className={style.linkNavBar}>
+                    Reportes 
                   </Nav.Link>
                 </>
               ) : (
